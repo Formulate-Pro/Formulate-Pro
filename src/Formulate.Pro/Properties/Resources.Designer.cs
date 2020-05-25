@@ -61,6 +61,93 @@ namespace Formulate.Pro.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &lt;div&gt;
+        ///    &lt;div class=&quot;umb-el-wrap&quot;&gt;
+        ///        &lt;label class=&quot;control-label&quot;&gt;
+        ///            &lt;localize key=&quot;formulate-labels_Sender Email&quot;&gt;
+        ///                Sender Email
+        ///            &lt;/localize&gt;
+        ///        &lt;/label&gt;
+        ///        &lt;div class=&quot;controls controls-row&quot;&gt;
+        ///            &lt;div&gt;
+        ///                &lt;input type=&quot;text&quot; ng-model=&quot;configuration.senderEmail&quot; /&gt;
+        ///            &lt;/div&gt;
+        ///        &lt;/div&gt;
+        ///    &lt;/div&gt;
+        ///    &lt;div class=&quot;umb-el-wrap&quot;&gt;
+        ///        &lt;label class=&quot;control-label&quot;&gt;
+        ///            &lt;localize key=&quot;formulate-labels_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string designedEmailHandler_html {
+            get {
+                return ResourceManager.GetString("designedEmailHandler_html", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to // Variables.
+        ///var app = angular.module(&quot;umbraco&quot;);
+        ///
+        ///// Associate directive/controller.
+        ///app.directive(&quot;formulateDesignedEmailHandler&quot;, directive);
+        ///
+        ///// Directive.
+        ///function directive() {
+        ///    return {
+        ///        restrict: &quot;E&quot;,
+        ///        replace: true,
+        ///        templateUrl: &quot;/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailHandler/designedEmailHandler.html&quot;,
+        ///        scope: {
+        ///            configuration: &quot;=&quot;,
+        ///            fields: &quot;=&quot;
+        ///        },
+        ///        controller: Controller
+        ///    };
+        ///}
+        ///
+        ///// Con [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string designedEmailHandler_js {
+            get {
+                return ResourceManager.GetString("designedEmailHandler_js", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;
+        ///&lt;language alias=&quot;en_us&quot; intName=&quot;English (US)&quot; localName=&quot;English (US)&quot; lcid=&quot;&quot; culture=&quot;en-US&quot;&gt;
+        ///  &lt;area alias=&quot;formulate-label-descriptions&quot;&gt;
+        ///    &lt;key alias=&quot;Subject Razor Path&quot;&gt;
+        ///      Optional. The path to the Razor view that renders the subject line. For example,
+        ///      &quot;~\Views\Emails\Contact Us (Subject).cshtml&quot; (without quotes).
+        ///    &lt;/key&gt;
+        ///    &lt;key alias=&quot;HTML Email Razor Path&quot;&gt;
+        ///      Required. The path to the Razor view that renders the H [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string en_GB_xml {
+            get {
+                return ResourceManager.GetString("en_GB_xml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; standalone=&quot;yes&quot;?&gt;
+        ///&lt;language alias=&quot;en_us&quot; intName=&quot;English (US)&quot; localName=&quot;English (US)&quot; lcid=&quot;&quot; culture=&quot;en-US&quot;&gt;
+        ///  &lt;area alias=&quot;formulate-label-descriptions&quot;&gt;
+        ///    &lt;key alias=&quot;Subject Razor Path&quot;&gt;
+        ///      Optional. The path to the Razor view that renders the subject line. For example,
+        ///      &quot;~\Views\Emails\Contact Us (Subject).cshtml&quot; (without quotes).
+        ///    &lt;/key&gt;
+        ///    &lt;key alias=&quot;HTML Email Razor Path&quot;&gt;
+        ///      Required. The path to the Razor view that renders the H [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string en_US_xml {
+            get {
+                return ResourceManager.GetString("en_US_xml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Formulate_Pro_Sample__HTML_cshtml {

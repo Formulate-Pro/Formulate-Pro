@@ -37,8 +37,9 @@
                 return;
             }
 
-            // Create sample files and update the version number in the file.
+            // Create files and update the version number in the file.
             CreateSampleFiles();
+            CreatePluginFiles();
             UpdateVersionNumber();
 
         }
@@ -84,7 +85,57 @@
             File.WriteAllBytes(htmlPath, Properties.Resources.Formulate_Pro_Sample__HTML_cshtml);
             File.WriteAllBytes(textPath, Properties.Resources.Formulate_Pro_Sample__Text_cshtml);
             File.WriteAllBytes(subjectPath, Properties.Resources.Formulate_Pro_Sample__Subject_cshtml);
+        }
 
+        /// <summary>
+        /// Creates the files in the /App_Plugins/Formulate.Pro/ folder.
+        /// </summary>
+        private void CreatePluginFiles()
+        {
+            var files = new[]
+            {
+                new
+                {
+                    Path = "~/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailhandler/designedEmailHandler.html",
+                    File = Properties.Resources.designedEmailHandler_html
+                },
+                new
+                {
+                    Path = "~/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailhandler/designedEmailHandler.js",
+                    File = Properties.Resources.designedEmailHandler_js
+                },
+                new
+                {
+                    Path = "~/App_Plugins/Formulate.Pro/Lang/en-GB.xml",
+                    File = Properties.Resources.en_GB_xml
+                },
+                new
+                {
+                    Path = "~/App_Plugins/Formulate.Pro/Lang/en-US.xml",
+                    File = Properties.Resources.en_US_xml
+                }
+            };
+            foreach (var file in files)
+            {
+                CreateFile(file.Path, file.File);
+            }
+        }
+
+        /// <summary>
+        /// Creates the file at the specified path.
+        /// </summary>
+        /// <param name="path">
+        /// The path to the file.
+        /// </param>
+        /// <param name="contents">
+        /// The file contents.
+        /// </param>
+        private void CreateFile(string path, string contents)
+        {
+            path = HostingEnvironment.MapPath(path);
+            var parent = Directory.GetParent(path).FullName;
+            EnsureFolderExists(parent);
+            File.WriteAllText(path, contents);
         }
 
         /// <summary>
