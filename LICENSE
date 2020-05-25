@@ -1,0 +1,38 @@
+FORMULATE PRO HONOR LICENSE
+===========================
+
+This software is open source in the sense that the source code is browsable on GitHub.
+
+That does not mean the software is free or that you are free to do what you like with the source code.
+
+If you do not pay for the software, you are not permitted to view the source code.
+
+If you do pay for the software, there are some restrictions on what you can do with the source code.
+
+Once you pay for the software, you are permitted to do the following:
+
+* Use the software according to the license level you paid for (e.g., project, personal, agency).
+* Browse the source code.
+* Modify the source code for use in the projects you obtained a license for.
+* Submit pull requests.
+
+Whether you paid or not, you are never permitted to do the following:
+
+* You may never redistribute the software in a way that competes with this software (e.g., you can't build a "Formulate Pro Plus" to compete with "Formulate Pro").
+* You may never change the license of the software (e.g., you can't release "Formulate Pro Free").
+* You may never use the source code to create derivative alterations that you make publicly available (e.g., "Formulate Pro Lite").
+
+Here are some examples of what you can do once you pay for a the software:
+
+* You may install it and use it to create contact forms on a website (there is no limit to the number of contact forms you can create).
+* If you notice a bug, you may wish to view the source code, make changes, and submit a pull request.
+* If you want to alter a feature, you may view the source code to alter that feature (though that altered feature may not be redistributed independent of the websiite you created it for).
+* Create mutiple environments for a given website (e.g., dev, stage, UAT, prod, etc.), each with their own domain. You don't need to pay for more domains, so long as it's the same website (i.e., multiple environments don't count against you).
+
+This software provides no mechanism to prevent abuse. That you will pay for its use is an exercise in trust. I believe you will honor that trust by paying for the software if you use it.
+
+This is also a license that is open to further changes based on common sense (e.g., if I missed an edge case).
+
+I will note litigate against anybody for making an honest mistake in reading this license. Let's work together to understand each other and improve this license.
+
+If in doubt, feel free to ask me for clarification. If you want to make a reasonable assumption without asking me, feel free to do that too.
