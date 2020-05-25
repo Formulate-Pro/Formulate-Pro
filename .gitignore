@@ -13,3 +13,6 @@ obj/
 
 # Visual Studio packages.
 **/packages/*/
+
+* WebStorm.
+.idea/
