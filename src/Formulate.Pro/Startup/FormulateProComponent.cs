@@ -5,6 +5,7 @@
     using System.IO;
     using System.Web.Hosting;
     using Umbraco.Core.Composing;
+    using Umbraco.Core.Logging;
 
     /// <summary>
     /// Prepares the website for Formulate Pro.
@@ -18,6 +19,30 @@
         /// The path to the file containing the Formulate Pro version number.
         /// </summary>
         private const string VersionPath = "~/App_Plugins/Formulate.Pro/formulate-pro-version.txt";
+
+        #endregion
+
+        #region Properties
+
+        /// <summary>
+        /// Logs to the Umbraco log.
+        /// </summary>
+        private ILogger Logger { get; set; }
+
+        #endregion
+
+        #region Constructors
+
+        /// <summary>
+        /// Primary constructor.
+        /// </summary>
+        /// <param name="logger">
+        /// The logger.
+        /// </param>
+        public FormulateProComponent(ILogger logger)
+        {
+            Logger = logger;
+        }
 
         #endregion
 
@@ -36,6 +61,9 @@
             {
                 return;
             }
+
+            // Log the upgrade.
+            Logger.Info<FormulateProComponent>($"Upgrading to Formulate Pro {version} from {fileVersion}.");
 
             // Create files and update the version number in the file.
             CreateSampleFiles();

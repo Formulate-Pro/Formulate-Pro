@@ -12,7 +12,8 @@
         /// This is the version of Formulate Pro. It is used on assemblies, and during the
         /// creation of the installer package.
         /// </summary>
-        public const string Version = "1.0.1";
+        public const string Version = "1.0.2";
 
     }
+
 }
