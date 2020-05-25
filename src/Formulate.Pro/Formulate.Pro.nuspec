@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Formulate.Pro</id>
+    <version>1.0.0</version>
+    <title>Formulate Pro</title>
+    <authors>Nicholas Westby</authors>
+    <owners>Nicholas Westby</owners>
+    <projectUrl>https://www.formulate.rocks/pro</projectUrl>
+    <licenseUrl>https://github.com/Nicholas-Westby/Formulate.Pro/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A paid extension to Umbraco Formulate.</description>
+    <copyright>Copyright 2020</copyright>
+    <tags>umbraco forms</tags>
+    <dependencies>
+      <dependency id="Formulate.Binaries" version="3.3.1" />
+      <dependency id="MetaObject" version="0.1.0" />
+      <dependency id="Newtonsoft.Json" version="12.0.1" />
+      <dependency id="RazorEngine" version="3.10.0" />
+    </dependencies>
+  </metadata>
+</package>
