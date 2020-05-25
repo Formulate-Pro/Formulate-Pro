@@ -20,6 +20,6 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\Formulate.Pro*.dll" target="lib\net45" />
+    <file src="bin\Release\Formulate.Pro*.dll" target="lib\net472" />
   </files>
 </package>
