@@ -1,0 +1,3 @@
+# Umbraco logs and TEMP files.
+/Logs
+/TEMP
