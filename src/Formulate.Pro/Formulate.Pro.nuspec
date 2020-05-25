@@ -21,5 +21,6 @@
   </metadata>
   <files>
     <file src="bin\Release\Formulate.Pro*.dll" target="lib\net472" />
+    <file src="bin\Release\Formulate.Pro*.xml" target="lib\net472" />
   </files>
 </package>
