@@ -77,14 +77,12 @@
         private void CreateSampleFiles()
         {
             var basePath = "~/Views/Partials/Formulate/Email";
-            var folder = HostingEnvironment.MapPath(basePath);
-            EnsureFolderExists(folder);
-            var htmlPath = HostingEnvironment.MapPath(basePath + "/Formulate Pro Sample (HTML).cshtml");
-            var textPath = HostingEnvironment.MapPath(basePath + "/Formulate Pro Sample (Text).cshtml");
-            var subjectPath = HostingEnvironment.MapPath(basePath + "/Formulate Pro Sample (Subject).cshtml");
-            File.WriteAllBytes(htmlPath, Properties.Resources.Formulate_Pro_Sample__HTML_cshtml);
-            File.WriteAllBytes(textPath, Properties.Resources.Formulate_Pro_Sample__Text_cshtml);
-            File.WriteAllBytes(subjectPath, Properties.Resources.Formulate_Pro_Sample__Subject_cshtml);
+            CreateFile(basePath + "/Formulate Pro Sample (HTML).cshtml",
+                Properties.Resources.Formulate_Pro_Sample__HTML_cshtml);
+            CreateFile(basePath + "/Formulate Pro Sample (Text).cshtml",
+                Properties.Resources.Formulate_Pro_Sample__Text_cshtml);
+            CreateFile(basePath + "/Formulate Pro Sample (Subject).cshtml",
+                Properties.Resources.Formulate_Pro_Sample__Subject_cshtml);
         }
 
         /// <summary>
@@ -96,12 +94,12 @@
             {
                 new
                 {
-                    Path = "~/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailhandler/designedEmailHandler.html",
+                    Path = "~/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailHandler/designedEmailHandler.html",
                     File = Properties.Resources.designedEmailHandler_html
                 },
                 new
                 {
-                    Path = "~/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailhandler/designedEmailHandler.js",
+                    Path = "~/App_Plugins/Formulate.Pro/Directives/Handlers/DesignedEmailHandler/designedEmailHandler.js",
                     File = Properties.Resources.designedEmailHandler_js
                 },
                 new
@@ -119,6 +117,24 @@
             {
                 CreateFile(file.Path, file.File);
             }
+            CreateFile("~/App_Plugins/Formulate.Pro/package.manifest", Properties.Resources.package_manifest);
+        }
+
+        /// <summary>
+        /// Creates the file at the specified path.
+        /// </summary>
+        /// <param name="path">
+        /// The path to the file.
+        /// </param>
+        /// <param name="contents">
+        /// The file contents.
+        /// </param>
+        private void CreateFile(string path, byte[] contents)
+        {
+            path = HostingEnvironment.MapPath(path);
+            var parent = Directory.GetParent(path).FullName;
+            EnsureFolderExists(parent);
+            File.WriteAllBytes(path, contents);
         }
 
         /// <summary>

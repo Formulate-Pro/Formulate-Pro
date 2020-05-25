@@ -139,4 +139,7 @@
   <data name="Formulate_Pro_Sample__Text_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Views\Partials\Formulate\Email\Formulate Pro Sample (Text).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="package_manifest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\App_Plugins\Formulate.Pro\package.manifest;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
