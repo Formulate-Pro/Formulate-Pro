@@ -436,9 +436,6 @@
     <Content Include="Views\Partials\Formulate\Responsive.Plain JavaScript.cshtml" />
     <Content Include="Views\Partials\Formulate\Responsive.Bootstrap.Angular.cshtml" />
     <Content Include="Views\Partials\Formulate\RenderForm.cshtml" />
-    <Content Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28Text%29.cshtml" />
-    <Content Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28Subject%29.cshtml" />
-    <Content Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28HTML%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Formulate.Pro\Formulate.Pro.csproj">
