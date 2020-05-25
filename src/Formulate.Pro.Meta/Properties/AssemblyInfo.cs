@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Formulate.Pro")]
+[assembly: AssemblyTitle("Formulate.Pro.Meta")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Formulate.Pro")]
+[assembly: AssemblyProduct("Formulate.Pro.Meta")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("661c9772-a9a1-4843-ba1e-5c8c459df664")]
+[assembly: Guid("29b21135-b06d-4ec5-a6ff-dcc23eebee03")]
 
 // Version information for an assembly consists of the following four values:
 //

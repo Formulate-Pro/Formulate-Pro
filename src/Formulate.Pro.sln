@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formulate.Pro", "..\Formula
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Website", "Website\Website.csproj", "{4D31D3B6-A8F1-4842-B12F-678D9F1061E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Formulate.Pro.Meta", "Formulate.Pro.Meta\Formulate.Pro.Meta.csproj", "{29B21135-B06D-4EC5-A6FF-DCC23EEBEE03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4D31D3B6-A8F1-4842-B12F-678D9F1061E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D31D3B6-A8F1-4842-B12F-678D9F1061E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D31D3B6-A8F1-4842-B12F-678D9F1061E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29B21135-B06D-4EC5-A6FF-DCC23EEBEE03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B21135-B06D-4EC5-A6FF-DCC23EEBEE03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B21135-B06D-4EC5-A6FF-DCC23EEBEE03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B21135-B06D-4EC5-A6FF-DCC23EEBEE03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
