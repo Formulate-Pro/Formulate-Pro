@@ -260,6 +260,13 @@
     <Compile Include="Forms\Handlers\DesignedEmail\EmailDataHelper.cs" />
     <Compile Include="Forms\Handlers\DesignedEmail\SafeExpandoObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Startup\FormulateProComponent.cs" />
+    <Compile Include="Startup\FormulateProComposer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -275,7 +282,12 @@
     <Content Include="App_Plugins\Formulate.Pro\Lang\en-GB.xml" />
     <Content Include="App_Plugins\Formulate.Pro\Lang\en-US.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Formulate.Pro.Meta\Formulate.Pro.Meta.csproj">
       <Project>{29b21135-b06d-4ec5-a6ff-dcc23eebee03}</Project>
