@@ -26,8 +26,8 @@ Here are some examples of what you can do once you pay for a the software:
 
 * You may install it and use it to create contact forms on a website (there is no limit to the number of contact forms you can create).
 * If you notice a bug, you may wish to view the source code, make changes, and submit a pull request.
-* If you want to alter a feature, you may view the source code to alter that feature (though that altered feature may not be redistributed independent of the websiite you created it for).
-* Create mutiple environments for a given website (e.g., dev, stage, UAT, prod, etc.), each with their own domain. You don't need to pay for more domains, so long as it's the same website (i.e., multiple environments don't count against you).
+* If you want to alter a feature, you may view the source code to alter that feature (though that altered feature may not be redistributed independent of the website you created it for).
+* Create multiple environments for a given website (e.g., dev, stage, UAT, prod, etc.), each with their own domain. You don't need to pay for more domains, so long as it's the same website (i.e., multiple environments don't count against you).
 
 This software provides no mechanism to prevent abuse. That you will pay for its use is an exercise in trust. I believe you will honor that trust by paying for the software if you use it.
 
