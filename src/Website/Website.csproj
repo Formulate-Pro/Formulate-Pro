@@ -312,7 +312,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Formulate.Pro\Formulate.Pro.csproj">
+    <ProjectReference Include="..\Formulate.Pro\Formulate.Pro.csproj">
       <Project>{661c9772-a9a1-4843-ba1e-5c8c459df664}</Project>
       <Name>Formulate.Pro</Name>
     </ProjectReference>
