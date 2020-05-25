@@ -53,8 +53,23 @@
     <Reference Include="CSharpTest.Net.Collections, Version=14.906.1403.1082, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
       <HintPath>..\packages\CSharpTest.Net.Collections.14.906.1403.1082\lib\net40\CSharpTest.Net.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="CsvHelper, Version=12.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.12.1.2\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Examine, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.1.0.2\lib\net452\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="formulate.api, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.3.0\lib\net45\formulate.api.dll</HintPath>
+    </Reference>
+    <Reference Include="formulate.app, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.3.0\lib\net45\formulate.app.dll</HintPath>
+    </Reference>
+    <Reference Include="formulate.core, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.3.0\lib\net45\formulate.core.dll</HintPath>
+    </Reference>
+    <Reference Include="formulate.meta, Version=3.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.3.0\lib\net45\formulate.meta.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -262,6 +277,109 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Plugins\formulate\backoffice\formulate\dataSources.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\dataValues.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\editConfiguredForm.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\editDataValue.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\editFolder.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\editForm.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\editLayout.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\editValidation.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\forms.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\layouts.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\submissions.html" />
+    <Content Include="App_Plugins\formulate\backoffice\formulate\validationLibrary.html" />
+    <Content Include="App_Plugins\formulate\dashboards\introduction.html" />
+    <Content Include="App_Plugins\formulate\dialogs\pickConfiguredForm.html" />
+    <Content Include="App_Plugins\formulate\dialogs\pickDataValue.html" />
+    <Content Include="App_Plugins\formulate\dialogs\pickForm.html" />
+    <Content Include="App_Plugins\formulate\dialogs\pickLayout.html" />
+    <Content Include="App_Plugins\formulate\dialogs\pickValidations.html" />
+    <Content Include="App_Plugins\formulate\editors\configured-form-picker.html" />
+    <Content Include="App_Plugins\formulate\fonts\icomoon\icomoon.svg" />
+    <Content Include="App_Plugins\formulate\formulate.css" />
+    <Content Include="App_Plugins\formulate\formulate.js" />
+    <Content Include="App_Plugins\formulate\Lang\cs-CZ.xml" />
+    <Content Include="App_Plugins\formulate\Lang\da-DK.xml" />
+    <Content Include="App_Plugins\formulate\Lang\de-DE.xml" />
+    <Content Include="App_Plugins\formulate\Lang\en-GB.xml" />
+    <Content Include="App_Plugins\formulate\Lang\en-US.xml" />
+    <Content Include="App_Plugins\formulate\Lang\es-ES.xml" />
+    <Content Include="App_Plugins\formulate\Lang\fr-FR.xml" />
+    <Content Include="App_Plugins\formulate\Lang\he-IL.xml" />
+    <Content Include="App_Plugins\formulate\Lang\it-IT.xml" />
+    <Content Include="App_Plugins\formulate\Lang\ja-JP.xml" />
+    <Content Include="App_Plugins\formulate\Lang\ko-KR.xml" />
+    <Content Include="App_Plugins\formulate\Lang\nb-NO.xml" />
+    <Content Include="App_Plugins\formulate\Lang\nl-NL.xml" />
+    <Content Include="App_Plugins\formulate\Lang\pl-PL.xml" />
+    <Content Include="App_Plugins\formulate\Lang\pt-BR.xml" />
+    <Content Include="App_Plugins\formulate\Lang\ru-RU.xml" />
+    <Content Include="App_Plugins\formulate\Lang\sv-SE.xml" />
+    <Content Include="App_Plugins\formulate\Lang\zh-CN.xml" />
+    <Content Include="App_Plugins\formulate\menu-actions\createDataValue.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\createFolder.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\createLayout.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\createValidation.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\deleteConfiguredForm.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\deleteDataValue.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\deleteFolder.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\deleteForm.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\deleteLayout.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\deleteValidation.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\moveDataValue.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\moveFolder.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\moveForm.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\moveLayout.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\moveValidation.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\removeEntityFromCloud.html" />
+    <Content Include="App_Plugins\formulate\menu-actions\storeEntityToCloud.html" />
+    <Content Include="App_Plugins\formulate\responsive.bootstrap.angular.js" />
+    <Content Include="App_Plugins\formulate\responsive.bootstrap.angular.min.js" />
+    <Content Include="App_Plugins\formulate\responsive.plain-javascript.js" />
+    <Content Include="App_Plugins\formulate\responsive.plain-javascript.min.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\builtin-types.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\checklist-model.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\field.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\fileChange.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\fileUpload.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\responsiveForm.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\rows.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\form\validation.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\directives\json-source\json-source.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\index.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.bootstrap.angular\services\field-type.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-button.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-checkbox-list.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-checkbox.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-date.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-extended-radio-button-list.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-header.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-hidden.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-radio-button-list.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-recaptcha.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-rich-text.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-select.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-text.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-textarea.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\fields\plain-upload.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\plain-index.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\polyfills\promise.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\get-field-renderers.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\get-field-validators.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\get-form-data.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\render-cell.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\render-field.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\render-form.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\render-forms.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\steps\render-row.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\utils\add-classes.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\utils\ajax.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\utils\field.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\utils\map-fields-by-id.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\utils\validation.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\validators\regex.js" />
+    <Content Include="App_Plugins\formulate\templates\responsive.plain-javascript\validators\required.js" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -300,6 +418,11 @@
     <Content Include="config\HealthChecks.config" />
     <Content Include="config\ClientDependency.config" />
     <Content Include="config\BackOfficeTours\getting-started.json" />
+    <Content Include="App_Plugins\formulate\package.manifest" />
+    <Content Include="App_Plugins\formulate\FormulateConfiguration.json" />
+    <Content Include="App_Plugins\formulate\fonts\icomoon\icomoon.woff" />
+    <Content Include="App_Plugins\formulate\fonts\icomoon\icomoon.ttf" />
+    <Content Include="App_Plugins\formulate\fonts\icomoon\icomoon.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Partials\Grid\Editors\Textstring.cshtml" />
@@ -310,6 +433,12 @@
     <Content Include="Views\Partials\Grid\Editors\Base.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
+    <Content Include="Views\Partials\Formulate\Responsive.Plain JavaScript.cshtml" />
+    <Content Include="Views\Partials\Formulate\Responsive.Bootstrap.Angular.cshtml" />
+    <Content Include="Views\Partials\Formulate\RenderForm.cshtml" />
+    <Content Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28Text%29.cshtml" />
+    <Content Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28Subject%29.cshtml" />
+    <Content Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28HTML%29.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Formulate.Pro\Formulate.Pro.csproj">
