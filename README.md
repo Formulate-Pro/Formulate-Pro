@@ -4,7 +4,7 @@ Formulate Pro is a paid extension to Umbraco Formulate. You cannot use this soft
 
 Umbraco Formulate is a form builder for Umbraco. More info here: [www.formulate.rocks](http://www.formulate.rocks/)
 
-For more info about acquiring a license and installing Formulate Pro, see here: [www.formulate.rocks/pro](http://www.formulate.rocks/pro)
+For more info about acquiring a license and installing Formulate Pro, see here: [www.formulate.rocks/pro/](http://www.formulate.rocks/pro/)
 
 # Features
 
