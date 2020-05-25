@@ -19,4 +19,7 @@
       <dependency id="RazorEngine" version="3.10.0" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="bin\Release\Formulate.Pro*.dll" target="lib\net45" />
+  </files>
 </package>
