@@ -1,0 +1,89 @@
+﻿<!doctype html>
+@{
+
+    // Helps with common operations, such as attaching files.
+    var helper = Model.Helper;
+
+    // Values are for fields that have simple text values.
+    var values = Model.Values;
+
+    // Collections are for fields that allow for multiple items to be selected.
+    var collections = Model.CollectionValues;
+
+    // The value list will allow you to loop through every field without knowing
+    // the names of those fields in advance.
+    var valueList = collections.GetRawValues();
+
+    // Attach a file that was uploaded in the form.
+    if (values.PhotoId != null)
+    {
+        helper.AttachFile(values.PhotoId);
+    }
+
+}
+
+<html>
+<head>
+    <title>Sample Formulate Email</title>
+</head>
+<body>
+
+    @* You can access meta-information, such as the sender and recipients. *@
+    <h2>Sender / Recipients</h2>
+    <p>
+        The sender @Model.SenderEmail sent this email to these recipients:
+    </p>
+    <ul>
+        @foreach (var recipient in Model.RecipientEmails)
+        {
+            <li>@recipient</li>
+        }
+    </ul>
+
+    @* You can access the message specified on the handler in the back office. *@
+    <h2>Message</h2>
+    <p>
+        @Model.Message
+    </p>
+
+    @* You can manually access fields by their field alias, and a few special
+        fields (URL and page name). *@
+    <h2>Manually-Specified Fields:</h2>
+    <ul>
+        <li>
+            URL: @values.Url
+        </li>
+        <li>
+            Page Name: @values.PageName
+        </li>
+        <li>
+            Email: @values.Email
+        </li>
+        <li>
+            Allow: @values.Allow
+        </li>
+        <li>
+            States: @string.Join(", ", collections.FavoriteStates)
+        </li>
+        <li>
+            Invalid Property: @values.ThisPropertyDoesNotExistAndYetItWillNotCauseAnError
+        </li>
+    </ul>
+
+    @* You can also loop over every field without knowing the aliases in advance. *@
+    <h2>Automatic Fields:</h2>
+    <ul>
+        @foreach (var item in valueList)
+        {
+            <li>
+                <strong>@item.Key:</strong> @string.Join(", ", item.Value as object[])
+            </li>
+        }
+    </ul>
+
+</body>
+</html>
+
+@using RazorEngine.Templating
+@using Formulate.Pro.Forms.Handlers.DesignedEmail
+@inherits TemplateBase<EmailData>

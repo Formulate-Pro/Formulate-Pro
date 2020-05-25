@@ -54,10 +54,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Handlers\DesignedEmail\DesignedEmailConfiguration.cs" />
+    <Compile Include="Forms\Handlers\DesignedEmail\DesignedEmailHandler.cs" />
+    <Compile Include="Forms\Handlers\DesignedEmail\EmailData.cs" />
+    <Compile Include="Forms\Handlers\DesignedEmail\EmailDataHelper.cs" />
+    <Compile Include="Forms\Handlers\DesignedEmail\SafeExpandoObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Plugins\Formulate.Pro\package.manifest" />
     <None Include="packages.config" />
+    <None Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28HTML%29.cshtml" />
+    <None Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28Subject%29.cshtml" />
+    <None Include="Views\Partials\Formulate\Email\Formulate Pro Sample %28Text%29.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\Formulate.Pro\Directives\Handlers\DesignedEmailHandler\designedEmailHandler.html" />
+    <Content Include="App_Plugins\Formulate.Pro\Directives\Handlers\DesignedEmailHandler\designedEmailHandler.js" />
+    <Content Include="App_Plugins\Formulate.Pro\Lang\en-GB.xml" />
+    <Content Include="App_Plugins\Formulate.Pro\Lang\en-US.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

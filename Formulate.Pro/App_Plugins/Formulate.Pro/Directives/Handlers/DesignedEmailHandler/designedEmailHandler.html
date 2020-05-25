@@ -1,0 +1,151 @@
+﻿<div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Sender Email">
+                Sender Email
+            </localize>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <input type="text" ng-model="configuration.senderEmail" />
+            </div>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Recipient Emails">
+                Recipient Emails
+            </localize>
+        </label>
+        <div class="controls controls-row">
+            <div ng-repeat="recipient in configuration.recipients">
+                <div class="input-append">
+                    <input type="text" ng-model="recipient.email" class="form-control" />
+                    <button type="button" class="btn btn-danger" ng-click="deleteRecipient($index)">X</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default" ng-click="addRecipient()">
+                <localize key="formulate-buttons_Add Recipient">
+                    Add Recipient
+                </localize>
+            </button>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Recipient Email Fields">
+                Recipient Email Fields
+            </localize>
+            <small>
+                <localize key="formulate-label-descriptions_Recipient Email Fields">
+                    The email addresses to send the email to will be extracted from the value
+                    of the fields you specify here. Useful when you want users to receive a
+                    confirmation email.
+                </localize>
+            </small>
+        </label>
+        <div class="controls controls-row">
+            <formulate-form-fields-chooser all-fields="fields"
+                                           chosen-fields="configuration.recipientFields">
+            </formulate-form-fields-chooser>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Delivery Type">
+                Delivery Type
+            </localize>
+            <small>
+                <localize key="formulate-label-descriptions_Delivery Type">
+                    The type of delivery to each recipient (i.e., To, Cc, or Bcc). If unspecified,
+                    Bcc will be assumed.
+                </localize>
+            </small>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <select ng-options="deliveryType.id as deliveryType.name for deliveryType in deliveryTypes" ng-model="configuration.deliveryType">
+                    <option value="" formulate-inject-localization="formulate-options_Select a Delivery Type"></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Subject">
+                Subject
+            </localize>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <input type="text" ng-model="configuration.subject" />
+            </div>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Subject Razor Path">
+                Subject Razor Path
+            </localize>
+            <small>
+                <localize key="formulate-label-descriptions_Subject Razor Path">
+                    Optional. The path to the Razor view that renders the subject line. For example,
+                    "~\Views\Emails\Contact Us (Subject).cshtml" (without quotes).
+                </localize>
+            </small>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <input type="text" ng-model="configuration.subjectRazorPath" />
+            </div>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Message">
+                Message
+            </localize>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <textarea ng-model="configuration.message"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_HTML Email Razor Path">
+                HTML Email Razor Path
+            </localize>
+            <small>
+                <localize key="formulate-label-descriptions_HTML Email Razor Path">
+                    Required. The path to the Razor view that renders the HTML version of the email message.
+                    For example, "~\Views\Emails\Contact Us (HTML).cshtml" (without quotes).
+                </localize>
+            </small>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <input type="text" ng-model="configuration.htmlEmailRazorPath" />
+            </div>
+        </div>
+    </div>
+    <div class="umb-el-wrap">
+        <label class="control-label">
+            <localize key="formulate-labels_Text Email Razor Path">
+                Text Email Razor Path
+            </localize>
+            <small>
+                <localize key="formulate-label-descriptions_Text Email Razor Path">
+                    Optional. The path to the Razor view that renders the text version of the email
+                    message. For example, "~\Views\Emails\Contact Us (Text).cshtml" (without quotes).
+                </localize>
+            </small>
+        </label>
+        <div class="controls controls-row">
+            <div>
+                <input type="text" ng-model="configuration.textEmailRazorPath" />
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@{
+
+    // The value list will allow you to loop through every field without knowing
+    // the names of those fields in advance.
+    var valueList = Model.CollectionValues.GetRawValues();
+
+}
+
+@foreach (var item in valueList)
+{
+    <text>
+        @item.Key: @string.Join(", ", item.Value as object[])
+    </text>
+}
+
+@using RazorEngine.Templating
+@using Formulate.Pro.Forms.Handlers.DesignedEmail
+@inherits TemplateBase<EmailData>

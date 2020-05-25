@@ -1,0 +1,27 @@
+﻿@{
+
+    // Values are for fields that have simple text values.
+    var values = Model.Values;
+
+    // Variables.
+    var pageName = values.PageName as string;
+    var url = values.Url as string;
+    var subject = (Model.Subject ?? "")
+        .Replace("{PageName}", pageName)
+        .Replace("{Url}", url);
+
+}
+
+@* Either use a default subject, or the subject specified in the back office. *@
+@if (string.IsNullOrWhiteSpace(subject))
+{
+    <text>Email for @values.PageName Page at @values.Url</text>
+}
+else
+{
+    <text>@subject</text>
+}
+
+@using RazorEngine.Templating
+@using Formulate.Pro.Forms.Handlers.DesignedEmail
+@inherits TemplateBase<EmailData>

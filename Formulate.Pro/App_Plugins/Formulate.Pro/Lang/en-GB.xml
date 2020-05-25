@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en_us" intName="English (US)" localName="English (US)" lcid="" culture="en-US">
+  <area alias="formulate-label-descriptions">
+    <key alias="Subject Razor Path">
+      Optional. The path to the Razor view that renders the subject line. For example,
+      "~\Views\Emails\Contact Us (Subject).cshtml" (without quotes).
+    </key>
+    <key alias="HTML Email Razor Path">
+      Required. The path to the Razor view that renders the HTML version of the email message.
+      For example, "~\Views\Emails\Contact Us (HTML).cshtml" (without quotes).
+    </key>
+    <key alias="Text Email Razor Path">
+      Optional. The path to the Razor view that renders the text version of the email
+      message. For example, "~\Views\Emails\Contact Us (Text).cshtml" (without quotes).
+    </key>
+  </area>
+  <area alias="formulate-labels">
+    <key alias="Subject Razor Path">Subject Razor Path</key>
+    <key alias="HTML Email Razor Path">HTML Email Razor Path</key>
+    <key alias="Text Email Razor Path">Text Email Razor Path</key>
+  </area>
+</language>

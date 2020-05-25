@@ -4,6 +4,9 @@
 # Visual Studio configuration.
 .vs/
 
+# Visual Studio project user options.
+*.csproj.user
+
 # Visual Studio build artifacts.
 bin/
 obj/
