@@ -7,3 +7,6 @@
 # Visual Studio build artifacts.
 bin/
 obj/
+
+# Visual Studio packages.
+**/packages/*/
