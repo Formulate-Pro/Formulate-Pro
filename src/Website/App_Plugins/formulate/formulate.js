@@ -1014,7 +1014,8 @@ directives["formDesigner/designer.html"] = "<div>\n" +
    "                                                    </localize>\n" +
    "                                                </label>\n" +
    "                                                <div class=\"controls controls-row\">\n" +
-   "                                                    <input type=\"text\"\n" +
+   "                                                    <input class=\"formulate__text--wide\"\n" +
+   "                                                           type=\"text\"\n" +
    "                                                           ng-model=\"handler.name\"\n" +
    "                                                           formulate-localize-attribute=\"placeholder\"\n" +
    "                                                           placeholder=\"formulate-placeholders_Handler Name\" />\n" +
@@ -1027,7 +1028,8 @@ directives["formDesigner/designer.html"] = "<div>\n" +
    "                                                    </localize>\n" +
    "                                                </label>\n" +
    "                                                <div class=\"controls controls-row\">\n" +
-   "                                                    <input type=\"text\"\n" +
+   "                                                    <input class=\"formulate__text--wide\"\n" +
+   "                                                           type=\"text\"\n" +
    "                                                           ng-model=\"handler.alias\"\n" +
    "                                                           formulate-localize-attribute=\"placeholder\"\n" +
    "                                                           placeholder=\"formulate-placeholders_Handler Alias\" />\n" +
@@ -1156,7 +1158,7 @@ directives["handlers/emailHandler/emailHandler.html"] = "<div>\n" +
    "        </label>\n" +
    "        <div class=\"controls controls-row\">\n" +
    "            <div>\n" +
-   "                <input type=\"text\" ng-model=\"configuration.senderEmail\" />\n" +
+   "                <input class=\"formulate__text--wide\" type=\"text\" ng-model=\"configuration.senderEmail\" />\n" +
    "            </div>\n" +
    "        </div>\n" +
    "    </div>\n" +
@@ -1168,7 +1170,7 @@ directives["handlers/emailHandler/emailHandler.html"] = "<div>\n" +
    "        </label>\n" +
    "        <div class=\"controls controls-row\">\n" +
    "            <div ng-repeat=\"recipient in configuration.recipients\">\n" +
-   "                <div class=\"input-append\">\n" +
+   "                <div class=\"input-append formulate__text-button-group--wide\">\n" +
    "                    <input type=\"text\" ng-model=\"recipient.email\" class=\"form-control\" />\n" +
    "                    <button type=\"button\" class=\"btn btn-danger\" ng-click=\"deleteRecipient($index)\">X</button>\n" +
    "                </div>\n" +
@@ -1228,7 +1230,7 @@ directives["handlers/emailHandler/emailHandler.html"] = "<div>\n" +
    "        </label>\n" +
    "        <div class=\"controls controls-row\">\n" +
    "            <div>\n" +
-   "                <input type=\"text\" ng-model=\"configuration.subject\" />\n" +
+   "                <input class=\"formulate__text--wide\" type=\"text\" ng-model=\"configuration.subject\" />\n" +
    "            </div>\n" +
    "        </div>\n" +
    "    </div>\n" +
@@ -1240,7 +1242,7 @@ directives["handlers/emailHandler/emailHandler.html"] = "<div>\n" +
    "        </label>\n" +
    "        <div class=\"controls controls-row\">\n" +
    "            <div>\n" +
-   "                <textarea ng-model=\"configuration.message\"></textarea>\n" +
+   "                <textarea class=\"formulate__text--wide\" ng-model=\"configuration.message\"></textarea>\n" +
    "            </div>\n" +
    "        </div>\n" +
    "    </div>\n" +

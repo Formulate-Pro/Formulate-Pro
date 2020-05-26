@@ -98,6 +98,12 @@ ul.formulate-entity-tree .entity-icon.selected {
   position: relative;
   background: transparent; }
 
+.formulate__text-button-group--wide {
+  width: calc(100% - 38px);
+  margin-top: 2px; }
+  .formulate__text-button-group--wide input {
+    width: 100%; }
+
 input.formulate-textbox--url {
   position: relative;
   width: 80%;
@@ -517,6 +523,9 @@ button.formulate-step-divider__delete {
 
 .formulate__dialog-confirmation-message {
   margin-bottom: 50px; }
+
+.formulate__text--wide {
+  width: 100%; }
 
 p.formulate-cf-picker-dialog__instructions {
   margin-left: 0;

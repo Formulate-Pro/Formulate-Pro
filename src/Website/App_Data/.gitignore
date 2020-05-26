@@ -1,3 +1,7 @@
 # Umbraco logs and TEMP files.
 /Logs
 /TEMP
+
+# Umbraco installed files.
+/Umbraco.sdf
+installedPackages.config

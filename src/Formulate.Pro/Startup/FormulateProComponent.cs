@@ -104,7 +104,7 @@
         /// </summary>
         private void CreateSampleFiles()
         {
-            var basePath = "~/Views/Partials/Formulate/Email";
+            var basePath = "~/Views/Formulate/Email";
             CreateFile(basePath + "/Formulate Pro Sample (HTML).cshtml",
                 Properties.Resources.Formulate_Pro_Sample__HTML_cshtml);
             CreateFile(basePath + "/Formulate Pro Sample (Text).cshtml",

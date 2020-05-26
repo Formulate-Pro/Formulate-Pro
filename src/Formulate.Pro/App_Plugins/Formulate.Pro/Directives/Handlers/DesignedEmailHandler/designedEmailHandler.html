@@ -7,7 +7,7 @@
         </label>
         <div class="controls controls-row">
             <div>
-                <input type="text" ng-model="configuration.senderEmail" />
+                <input class="formulate__text--wide" type="text" ng-model="configuration.senderEmail" />
             </div>
         </div>
     </div>
@@ -19,7 +19,7 @@
         </label>
         <div class="controls controls-row">
             <div ng-repeat="recipient in configuration.recipients">
-                <div class="input-append">
+                <div class="input-append formulate__text-button-group--wide">
                     <input type="text" ng-model="recipient.email" class="form-control" />
                     <button type="button" class="btn btn-danger" ng-click="deleteRecipient($index)">X</button>
                 </div>
@@ -78,7 +78,7 @@
         </label>
         <div class="controls controls-row">
             <div>
-                <input type="text" ng-model="configuration.subject" />
+                <input class="formulate__text--wide" type="text" ng-model="configuration.subject" />
             </div>
         </div>
     </div>
@@ -96,7 +96,7 @@
         </label>
         <div class="controls controls-row">
             <div>
-                <input type="text" ng-model="configuration.subjectRazorPath" />
+                <input class="formulate__text--wide" type="text" ng-model="configuration.subjectRazorPath" />
             </div>
         </div>
     </div>
@@ -108,7 +108,7 @@
         </label>
         <div class="controls controls-row">
             <div>
-                <textarea ng-model="configuration.message"></textarea>
+                <textarea class="formulate__text--wide" ng-model="configuration.message"></textarea>
             </div>
         </div>
     </div>
@@ -126,7 +126,7 @@
         </label>
         <div class="controls controls-row">
             <div>
-                <input type="text" ng-model="configuration.htmlEmailRazorPath" />
+                <input class="formulate__text--wide" type="text" ng-model="configuration.htmlEmailRazorPath" />
             </div>
         </div>
     </div>
@@ -144,7 +144,7 @@
         </label>
         <div class="controls controls-row">
             <div>
-                <input type="text" ng-model="configuration.textEmailRazorPath" />
+                <input class="formulate__text--wide" type="text" ng-model="configuration.textEmailRazorPath" />
             </div>
         </div>
     </div>

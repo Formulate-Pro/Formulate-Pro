@@ -118,9 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="designedEmailHandler_html" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\App_Plugins\Formulate.Pro\Directives\Handlers\DesignedEmailHandler\designedEmailHandler.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="designedEmailHandler_js" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\App_Plugins\Formulate.Pro\Directives\Handlers\DesignedEmailHandler\designedEmailHandler.js;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -130,16 +127,19 @@
   <data name="en_US_xml" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\App_Plugins\Formulate.Pro\Lang\en-US.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
-  <data name="Formulate_Pro_Sample__HTML_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Views\Partials\Formulate\Email\Formulate Pro Sample (HTML).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Formulate_Pro_Sample__Subject_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Views\Partials\Formulate\Email\Formulate Pro Sample (Subject).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Formulate_Pro_Sample__Text_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Views\Partials\Formulate\Email\Formulate Pro Sample (Text).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="package_manifest" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\App_Plugins\Formulate.Pro\package.manifest;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="designedEmailHandler_html" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\App_Plugins\Formulate.Pro\Directives\Handlers\DesignedEmailHandler\designedEmailHandler.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Formulate_Pro_Sample__HTML_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Views\Formulate\Email\Formulate Pro Sample (HTML).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Formulate_Pro_Sample__Subject_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Views\Formulate\Email\Formulate Pro Sample (Subject).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Formulate_Pro_Sample__Text_cshtml" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Views\Formulate\Email\Formulate Pro Sample (Text).cshtml;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

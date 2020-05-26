@@ -70,13 +70,13 @@ namespace Formulate.Pro.Properties {
         ///        &lt;/label&gt;
         ///        &lt;div class=&quot;controls controls-row&quot;&gt;
         ///            &lt;div&gt;
-        ///                &lt;input type=&quot;text&quot; ng-model=&quot;configuration.senderEmail&quot; /&gt;
+        ///                &lt;input class=&quot;formulate__text--wide&quot; type=&quot;text&quot; ng-model=&quot;configuration.senderEmail&quot; /&gt;
         ///            &lt;/div&gt;
         ///        &lt;/div&gt;
         ///    &lt;/div&gt;
         ///    &lt;div class=&quot;umb-el-wrap&quot;&gt;
         ///        &lt;label class=&quot;control-label&quot;&gt;
-        ///            &lt;localize key=&quot;formulate-labels_ [rest of string was truncated]&quot;;.
+        ///            &lt;l [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string designedEmailHandler_html {
             get {
