@@ -36,7 +36,7 @@
 
         #endregion
 
-        #region Properties
+        #region Methods
 
         /// <summary>
         /// Attach the specified file to the email.
