@@ -19,6 +19,7 @@
     using System.Net.Mime;
     using System.Web;
     using System.Web.Hosting;
+    using Usage;
 
     /// <summary>
     /// Facilitates sending designed emails using Razor syntax.
@@ -85,6 +86,26 @@
         #endregion
 
         #region Public Methods
+
+        /// <summary>
+        /// Prepares to handle the form submission.
+        /// </summary>
+        /// <param name="context">
+        /// The form submission context.
+        /// </param>
+        /// <param name="configuration">
+        /// The handler configuration.
+        /// </param>
+        public override void PrepareHandleForm(FormSubmissionContext context, object configuration)
+        {
+
+            // Track usage of this feature.
+            UsageTracker.TrackDesignedEmail();
+
+            // Boilerplate.
+            base.PrepareHandleForm(context, configuration);
+
+        }
 
         /// <summary>
         /// Handles a form submission (sends an email).
