@@ -1,0 +1,31 @@
+/* Set the font size of fields that contain text. */
+input,
+textarea,
+select,
+button {
+    font-size: 16px;
+}
+
+/* The text-style fields should be 100% of the width of the cell. */
+input[type=text],
+input[type=date],
+textarea,
+select {
+    width: 100%;
+    padding-left: 10px;
+}
+
+/* Set the height of the text and button fields. */
+input[type=text],
+input[type=date],
+select,
+button {
+    height: 44px;
+    line-height: 44px;
+}
+
+/* Set the height of the textarea fields. */
+textarea {
+    height: 200px;
+    padding: 10px;
+}

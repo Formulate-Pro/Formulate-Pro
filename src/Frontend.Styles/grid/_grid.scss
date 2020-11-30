@@ -1,0 +1,27 @@
+/* Variables. */
+$gutter: 10px;
+
+/* Define flexbox sizing on each row. */
+.formulate__row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Set the width of each column. */
+@for $column from 1 through 12 {
+    $blocks-per-row: 12 / $column;
+    $gaps-per-column: $blocks-per-row - 1;
+    $gutter-per-column: $gaps-per-column * $gutter / $blocks-per-row;
+    $width-per-column: $column / 12 * 100%;
+    .formulate__cell--#{$column}-columns {
+        width: calc(#{$width-per-column} - #{$gutter-per-column});
+    }
+}
+
+/* On mobile, use the full width of the viewport. */
+@media (max-width: 767px) {
+    .formulate__cell {
+        width: 100%;
+    }
+}

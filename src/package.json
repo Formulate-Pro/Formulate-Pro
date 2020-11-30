@@ -1,0 +1,17 @@
+{
+  "name": "formulate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.29.0"
+  },
+  "scripts": {
+    "build": "npm run styles",
+    "styles": "sass Frontend.Styles/app.scss Website/css/app.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
