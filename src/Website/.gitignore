@@ -1,2 +1,6 @@
 # Umbraco.
 /Umbraco
+
+# Files installed by the default starter kit.
+/css
+/scripts

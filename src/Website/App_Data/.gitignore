@@ -5,3 +5,7 @@
 # Umbraco installed files.
 /Umbraco.sdf
 installedPackages.config
+
+# Temporary and generated files.
+/cache
+/Models
