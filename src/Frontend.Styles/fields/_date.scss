@@ -1,6 +1,11 @@
 .formulate__field {
+    &--date {
+        display: flex;
+        flex-direction: column;
+    }
     input[type=date] {
         border-radius: 0;
         border: 2px solid;
+        order: 1;
     }
 }

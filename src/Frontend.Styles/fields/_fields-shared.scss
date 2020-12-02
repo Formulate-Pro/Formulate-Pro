@@ -1,5 +1,8 @@
 .formulate__field {
 
+    // Allow field elements to be positioned relative to the field container.
+    position: relative;
+
     // Spacing between fields.
     margin: 8px 0;
 
@@ -8,7 +11,7 @@
     textarea,
     select,
     button {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     // The text-style fields should be 100% of the width of the cell.
@@ -20,19 +23,12 @@
         padding-left: 10px;
     }
 
-    // Set the height of the text and button fields.
+    // Set the height of the text fields.
     input[type=text],
-    input[type=date],
-    select,
-    button {
-        height: 44px;
-        line-height: 44px;
-    }
-
-    // Set the height of the textarea fields.
-    textarea {
-        height: 200px;
-        padding: 10px;
+    input[type=date] {
+        height: 50px;
+        line-height: 40px;
+        padding-top: 10px;
     }
 
 }
