@@ -8,5 +8,20 @@
         height: 50px;
         line-height: 50px;
         padding: 0 14px;
+        min-width: 200px;
+        font-weight: bold;
+
+        &:active,
+        &:focus {
+            outline: 0;
+        }
+
+        &:active {
+            box-shadow: 2px 2px 1px #888;
+        }
+
+        &:focus {
+            text-shadow: 2px 2px 2px #888;
+        }
     }
 }

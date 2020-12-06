@@ -1,0 +1,11 @@
+.formulate__inline-validation-summary {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &__error {
+        color: #f00;
+        margin-top: 5px;
+        font-weight: bold;
+    }
+}

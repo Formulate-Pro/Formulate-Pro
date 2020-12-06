@@ -2,10 +2,32 @@
     &--date {
         display: flex;
         flex-direction: column;
+
+        label {
+            order: -1;
+        }
     }
     input[type=date] {
         border-radius: 0;
         border: 2px solid;
-        order: 1;
+        height: 50px;
+        line-height: 50px;
+
+        &:focus {
+            background: #eee;
+            outline: 0;
+        }
+    }
+
+    &--validation-error {
+        &.formulate__field--date {
+            input[type=date] {
+                border-color: #f00;
+                color: #f00;
+                + label {
+                    color: #f00;
+                }
+            }
+        }
     }
 }

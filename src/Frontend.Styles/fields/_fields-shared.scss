@@ -4,7 +4,7 @@
     position: relative;
 
     // Spacing between fields.
-    margin: 8px 0;
+    margin: 20px 0;
 
     // Set the font size of fields that contain text.
     input,
@@ -24,11 +24,36 @@
     }
 
     // Set the height of the text fields.
-    input[type=text],
-    input[type=date] {
+    input[type=text] {
         height: 50px;
         line-height: 40px;
         padding-top: 10px;
     }
 
+    label {
+        font-weight: bold;
+    }
+
+}
+
+@mixin hide-text-placeholder() {
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: transparent;
+        opacity: 1;
+    }
+
+    &::-moz-placeholder { /* Firefox 19+ */
+        color: transparent;
+        opacity: 1;
+    }
+
+    &:-ms-input-placeholder { /* IE 10+ */
+        color: transparent;
+        opacity: 1;
+    }
+
+    &:-moz-placeholder { /* Firefox 18- */
+        color: transparent;
+        opacity: 1;
+    }
 }

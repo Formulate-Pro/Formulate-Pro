@@ -1,8 +1,31 @@
 .formulate__field {
+    &--select {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            position: absolute;
+            left: -9999px;
+        }
+    }
     select {
         border-radius: 0;
         border: 2px solid;
         height: 50px;
         line-height: 50px;
+
+        &:focus {
+            background: #eee;
+            outline: 0;
+        }
+    }
+
+    &--validation-error {
+        &.formulate__field--select {
+            select {
+                border-color: #f00;
+                color: #f00;
+            }
+        }
     }
 }
