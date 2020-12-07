@@ -30,10 +30,18 @@
         padding-top: 10px;
     }
 
+    // Make all field labels bold.
     label {
         font-weight: bold;
     }
 
+    // Style fieldsets (e.g., for checkbox list and radio button list).
+    @at-root fieldset#{&} {
+        border: 2px solid #000;
+        legend {
+            font-weight: bold;
+        }
+    }
 }
 
 @mixin hide-text-placeholder() {
