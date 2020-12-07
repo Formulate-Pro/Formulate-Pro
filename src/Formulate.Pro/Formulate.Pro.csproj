@@ -49,17 +49,17 @@
     <Reference Include="Examine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.1.0.0\lib\net452\Examine.dll</HintPath>
     </Reference>
-    <Reference Include="formulate.api, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Formulate.Binaries.3.3.3\lib\net45\formulate.api.dll</HintPath>
+    <Reference Include="formulate.api, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.4.0\lib\net45\formulate.api.dll</HintPath>
     </Reference>
-    <Reference Include="formulate.app, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Formulate.Binaries.3.3.3\lib\net45\formulate.app.dll</HintPath>
+    <Reference Include="formulate.app, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.4.0\lib\net45\formulate.app.dll</HintPath>
     </Reference>
-    <Reference Include="formulate.core, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Formulate.Binaries.3.3.3\lib\net45\formulate.core.dll</HintPath>
+    <Reference Include="formulate.core, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.4.0\lib\net45\formulate.core.dll</HintPath>
     </Reference>
-    <Reference Include="formulate.meta, Version=3.3.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Formulate.Binaries.3.3.3\lib\net45\formulate.meta.dll</HintPath>
+    <Reference Include="formulate.meta, Version=3.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Formulate.Binaries.3.4.0\lib\net45\formulate.meta.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>

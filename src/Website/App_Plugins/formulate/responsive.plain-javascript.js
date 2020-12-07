@@ -1,4 +1,4 @@
-(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 // Dependencies.
 let FieldUtility = require("../utils/field");
 
@@ -184,7 +184,7 @@ function RenderCheckboxList(fieldData, fieldValidators, cssClasses) {
 
     // Variables.
     let items = fieldData.configuration.items, i, item, label, value, wrapperElement, elements = [],
-        labelElement;
+        legendElement;
 
     // Add each checkbox.
     for (i = 0; i < items.length; i++) {
@@ -200,6 +200,7 @@ function RenderCheckboxList(fieldData, fieldValidators, cssClasses) {
             cssClasses: cssClasses,
             usePlaceholder: false,
             wrapperElement: wrapperElement,
+            wrapperElementType: 'fieldset',
             nestFieldInLabel: true,
             value: value,
             label: label,
@@ -213,13 +214,13 @@ function RenderCheckboxList(fieldData, fieldValidators, cssClasses) {
         // Remember the checkbox input element.
         elements.push(this.element);
 
-        // Add a label if it hasn't been added yet.
-        if (!labelElement) {
-            labelElement = document.createElement("label");
-            labelElement.classList.add("formulate__field__label");
-            labelElement.classList.add("formulate__field__label--group");
-            labelElement.appendChild(document.createTextNode(fieldData.label));
-            wrapperElement.insertBefore(labelElement, this.element.parentNode);
+        // Add a fieldset if it hasn't been added yet.
+        if (!legendElement) {
+            legendElement = document.createElement("legend");
+            legendElement.classList.add("formulate__field__label");
+            legendElement.classList.add("formulate__field__label--group");
+            legendElement.appendChild(document.createTextNode(fieldData.label));
+            wrapperElement.insertBefore(legendElement, this.element.parentNode);
         }
 
     }
@@ -403,7 +404,7 @@ let FieldUtility = require("../utils/field");
 function RenderRadioList(fieldData, fieldValidators, cssClasses) {
 
     // Variables.
-    let i, item, primary, secondary, wrapperElement, labelElement,
+    let i, item, primary, secondary, wrapperElement, legendElement,
         elements = [],
         items = fieldData.configuration.items,
         name = FieldUtility.generateId("radio-button-list-");
@@ -422,6 +423,7 @@ function RenderRadioList(fieldData, fieldValidators, cssClasses) {
             cssClasses: cssClasses,
             usePlaceholder: false,
             wrapperElement: wrapperElement,
+            wrapperElementType: 'fieldset',
             nestFieldInLabel: true,
             value: primary,
             label: primary,
@@ -437,13 +439,13 @@ function RenderRadioList(fieldData, fieldValidators, cssClasses) {
         // Remember the radio button input element.
         elements.push(this.element);
 
-        // Add a label if it hasn't been added yet.
-        if (!labelElement) {
-            labelElement = document.createElement("label");
-            labelElement.classList.add("formulate__field__label");
-            labelElement.classList.add("formulate__field__label--group");
-            labelElement.appendChild(document.createTextNode(fieldData.label));
-            wrapperElement.insertBefore(labelElement, this.element.parentNode);
+        // Add a legend if it hasn't been added yet.
+        if (!legendElement) {
+            legendElement = document.createElement("legend");
+            legendElement.classList.add("formulate__field__label");
+            legendElement.classList.add("formulate__field__label--group");
+            legendElement.appendChild(document.createTextNode(fieldData.label));
+            wrapperElement.insertBefore(legendElement, this.element.parentNode);
         }
 
     }
@@ -624,7 +626,7 @@ let FieldUtility = require("../utils/field");
 function RenderRadioList(fieldData, fieldValidators, cssClasses) {
 
     // Variables.
-    let i, item, label, value, wrapperElement, labelElement,
+    let i, item, label, value, wrapperElement, legendElement,
         elements = [],
         items = fieldData.configuration.items,
         name = FieldUtility.generateId("radio-button-list-");
@@ -643,6 +645,7 @@ function RenderRadioList(fieldData, fieldValidators, cssClasses) {
             cssClasses: cssClasses,
             usePlaceholder: false,
             wrapperElement: wrapperElement,
+            wrapperElementType: 'fieldset',
             nestFieldInLabel: true,
             value: value,
             label: label,
@@ -657,13 +660,13 @@ function RenderRadioList(fieldData, fieldValidators, cssClasses) {
         // Remember the radio button input element.
         elements.push(this.element);
 
-        // Add a label if it hasn't been added yet.
-        if (!labelElement) {
-            labelElement = document.createElement("label");
-            labelElement.classList.add("formulate__field__label");
-            labelElement.classList.add("formulate__field__label--group");
-            labelElement.appendChild(document.createTextNode(fieldData.label));
-            wrapperElement.insertBefore(labelElement, this.element.parentNode);
+        // Add a legend if it hasn't been added yet.
+        if (!legendElement) {
+            legendElement = document.createElement("legend");
+            legendElement.classList.add("formulate__field__label");
+            legendElement.classList.add("formulate__field__label--group");
+            legendElement.appendChild(document.createTextNode(fieldData.label));
+            wrapperElement.insertBefore(legendElement, this.element.parentNode);
         }
 
     }
@@ -2139,7 +2142,7 @@ Field.setData = function (data, value, options, alias, id) {
  * @param fieldRenderer The field renderer to initialize.
  * @param fieldData The field data that should be used to render the field.
  * @param fieldValidators The associative array of the field validating functions.
- * @param options {{type: string, usePlaceholder: boolean, useLabel: boolean, useWrapper: boolean, cssClasses: string[], nodeName: string, nestFieldInLabel: boolean, wrapperElement: HTMLElement, wrapLabelText: boolean, fieldBeforeLabelText: boolean, name: string, label: string, label2: string}}
+ * @param options {{type: string, usePlaceholder: boolean, useLabel: boolean, useWrapper: boolean, cssClasses: string[], nodeName: string, nestFieldInLabel: boolean, wrapperElement: HTMLElement, wrapperElementType: string, wrapLabelText: boolean, fieldBeforeLabelText: boolean, name: string, label: string, label2: string}}
  *        The options to use when constructing the field.
  */
 Field.initializeField = function (fieldRenderer, fieldData, fieldValidators, options) {
@@ -2148,6 +2151,7 @@ Field.initializeField = function (fieldRenderer, fieldData, fieldValidators, opt
     let fieldElement, labelElement, fieldId, textNode, labelTextWrapper,
         useWrapper = options.useWrapper !== false,
         wrapperElement = options.wrapperElement,
+        wrapperElementType = options.wrapperElementType || 'div',
         useLabel = options.useLabel !== false,
         labelText = options.hasOwnProperty("label")
             ? options.label
@@ -2157,7 +2161,14 @@ Field.initializeField = function (fieldRenderer, fieldData, fieldValidators, opt
     // Create element.
     fieldElement = document.createElement(options.nodeName || "input");
     if (options.type) {
-        fieldElement.type = options.type;
+        try {
+            fieldElement.type = options.type;
+        } catch (ex) {
+
+            // Fallback for IE11 (throws an error in some cases, such as when type="date").
+            fieldElement.setAttribute("type", options.type);
+
+        }
     }
     if (options.hasOwnProperty("name")) {
         fieldElement.name = options.name;
@@ -2180,7 +2191,7 @@ Field.initializeField = function (fieldRenderer, fieldData, fieldValidators, opt
 
     // Create wrapper element, or just use the field element as the wrapper.
     wrapperElement = useWrapper
-        ? (wrapperElement || document.createElement("div"))
+        ? (wrapperElement || document.createElement(wrapperElementType))
         : fieldElement;
 
     // Attach CSS classes.

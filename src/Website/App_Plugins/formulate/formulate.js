@@ -1,4 +1,4 @@
-(function(){function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s}return e})()({1:[function(require,module,exports){
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports = function () {return directives;};
 var directives = {};
 
@@ -575,6 +575,28 @@ directives["dialogs/validationPicker/validationPicker.html"] = "<form name=\"val
    "        </umb-editor-footer>\n" +
    "    </umb-editor-view>\n" +
    "</form>";
+
+directives["duplicateFormConfirmation/duplicateForm.html"] = "<div ng-if=\"!initialized\">\n" +
+   "    <localize key=\"formulate-general_Loading\">\n" +
+   "        Loading...\n" +
+   "    </localize>\n" +
+   "</div>\n" +
+   "<div ng-if=\"initialized\">\n" +
+   "    <div class=\"formulate__dialog-confirmation-message\">\n" +
+   "        <formulate-localize-content key=\"formulate-confirmations_Duplicate Form\">\n" +
+   "        </formulate-localize-content>\n" +
+   "    </div>\n" +
+   "    <button type=\"button\" class=\"btn btn-link\" ng-click=\"cancel()\">\n" +
+   "        <localize key=\"formulate-buttons_Cancel\">\n" +
+   "            Cancel\n" +
+   "        </localize>\n" +
+   "    </button>\n" +
+   "    <button type=\"button\" class=\"btn btn-info\" ng-click=\"duplicateForm()\">\n" +
+   "        <localize key=\"formulate-buttons_Duplicate Form\">\n" +
+   "            Duplicate Form\n" +
+   "        </localize>\n" +
+   "    </button>\n" +
+   "</div>";
 
 directives["entityPicker/entityPicker.html"] = "<div ng-if=\"rootNodes\">\n" +
    "    <formulate-entity-picker-tree max-count=\"maxCount\"\n" +
@@ -4207,6 +4229,120 @@ function controller($scope, formulateVars, localizationService) {
 }
 },{}],26:[function(require,module,exports){
 // Variables.
+controller.$inject = ["$scope", "$location", "$q", "$http", "navigationService", "formulateForms", "treeService"];
+directive.$inject = ["formulateDirectives"];
+var app = angular.module("umbraco");
+
+// Register directive/controller.
+app.controller("formulate.duplicateFormConfirmation", controller);
+app.directive("formulateDuplicateFormConfirmation", directive);
+
+// Directive.
+function directive(formulateDirectives) {
+    return {
+        restrict: "E",
+        template: formulateDirectives.get("duplicateFormConfirmation/duplicateForm.html"),
+        controller: "formulate.duplicateFormConfirmation"
+    };
+}
+
+// Controller.
+function controller($scope, $location, $q, $http, navigationService,
+    formulateForms, treeService) {
+
+    // Variables.
+    var formId = $scope.currentNode.id;
+
+    // Variable containing the common services (easier to pass around).
+    var services = {
+        $scope: $scope,
+        $location: $location,
+        $q: $q,
+        $http: $http,
+        navigationService: navigationService,
+        formulateForms: formulateForms,
+        treeService: treeService
+    };
+
+    // Assign scope variables.
+    $scope.initialized = false;
+
+    // Assign functions on scope.
+    $scope.duplicateForm = getDuplicateForm(services);
+    $scope.cancel = getCancel(services);
+
+    // Load form information.
+    loadFormInfo(formId, services);
+
+}
+
+// Loads information about the form.
+function loadFormInfo(formId, services) {
+    services.formulateForms.getFormInfo(formId).then(function(form) {
+        services.$scope.formId = form.formId;
+        services.$scope.formName = form.name;
+        services.$scope.initialized = true;
+    });
+}
+
+// Returns a function that duplicates a form.
+function getDuplicateForm(services) {
+    return function() {
+
+        // Variables.
+        var formId = services.$scope.formId;
+        var formPromise = services.formulateForms.getFormInfo(formId);
+
+        // Once we have the form information...
+        formPromise.then(function (form) {
+
+            // Variables.
+            var path = form.path;
+            var parentId = getParentId(path);
+
+            // Duplicate form.
+            services.formulateForms.duplicateForm(formId, parentId)
+                .then(function (responseData) {
+
+                    // Update tree.
+                    var options = {
+                        tree: "formulate",
+                        path: responseData.path,
+                        forceReload: true,
+                        activate: false
+                    };
+                    services.navigationService.syncTree(options);
+
+                    // Close dialog.
+                    services.navigationService.hideDialog();
+
+                    // Redirect.
+                    var url = "/formulate/formulate/editForm/"
+                        + responseData.formId;
+                    services.$location.url(url);
+
+                });
+        });
+
+    };
+}
+
+// Returns the function that cancels the duplication.
+function getCancel(services) {
+    return function () {
+        services.navigationService.hideDialog();
+    };
+}
+
+// Gets the ID of the form's parent.
+function getParentId(path) {
+    var parentId = path.length > 0
+        ? path[path.length - 2]
+        : null;
+    return parentId;
+}
+},{}],27:[function(require,module,exports){
+// Variables.
 entityPickerDirective.$inject = ["formulateDirectives"];
 entityPickerController.$inject = ["$scope", "formulateEntities"];
 var app = angular.module("umbraco");
@@ -4276,7 +4412,7 @@ function getViewModel(item) {
         expanded: false
     };
 }
-},{}],27:[function(require,module,exports){
+},{}],28:[function(require,module,exports){
 // Variables.
 entityPickerTreeDirective.$inject = ["formulateDirectives", "formulateRecursion"];
 entityPickerTreeController.$inject = ["$scope", "formulateEntities", "notificationsService", "localizationService"];
@@ -4416,7 +4552,7 @@ function isSelected(services) {
         return $scope.selection.indexOf(item.id) > -1;
     }
 }
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 // Variables.
 fieldChooserDirective.$inject = ["formulateDirectives"];
 fieldChooserController.$inject = ["$scope", "$element", "formulateFields"];
@@ -4488,7 +4624,7 @@ function calculateDialogTop(options) {
     }
 
 }
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives", "$compile"];
 var app = angular.module("umbraco");
@@ -4516,7 +4652,7 @@ function directive(formulateDirectives, $compile) {
         }
     };
 }
-},{}],30:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 Controller.$inject = ["formulateFields", "$scope"];
@@ -4557,7 +4693,7 @@ function directive(formulateDirectives) {
         }
     };
 }
-},{}],31:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 // Variables.
 checkboxFieldDirective.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -4573,7 +4709,7 @@ function checkboxFieldDirective(formulateDirectives) {
         template: formulateDirectives.get("fields/checkboxField/checkboxField.html")
     };
 }
-},{}],32:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["$scope", "editorService", "formulateDataValues"];
@@ -4670,7 +4806,7 @@ function refreshDataValue(services) {
         });
 
 }
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -4686,7 +4822,7 @@ function directive(formulateDirectives) {
         template: formulateDirectives.get("fields/dateField/dateField.html")
     };
 }
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["$scope", "editorService", "formulateDataValues"];
@@ -4783,7 +4919,7 @@ function refreshDataValue(services) {
         });
 
 }
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["$scope", "editorService", "formulateDataValues"];
@@ -4882,7 +5018,7 @@ function refreshDataValue(services) {
         });
 
 }
-},{}],36:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -4901,7 +5037,7 @@ function directive(formulateDirectives) {
         }
     };
 }
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -4917,7 +5053,7 @@ function directive(formulateDirectives) {
         template: formulateDirectives.get("fields/hiddenField/hiddenField.html")
     };
 }
-},{}],38:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 // Variables.
 Controller.$inject = ["$scope", "editorService", "formulateDataValues"];
 directive.$inject = ["formulateDirectives"];
@@ -5024,7 +5160,7 @@ function refreshDataValue(services) {
         });
 
 }
-},{}],39:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["formulateServerConfig", "$scope"];
@@ -5050,7 +5186,7 @@ function controller(formulateServerConfig, $scope) {
         $scope.hasConfiguredRecaptcha = hasConfigured;
     });
 }
-},{}],40:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives", "tinyMceService"];
 Controller.$inject = ["$scope"];
@@ -5117,7 +5253,7 @@ function directive(formulateDirectives, tinyMceService) {
         }
     };
 }
-},{}],41:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -5133,7 +5269,7 @@ function directive(formulateDirectives) {
         template: formulateDirectives.get("fields/textAreaField/textAreaField.html")
     };
 }
-},{}],42:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -5152,7 +5288,7 @@ function directive(formulateDirectives) {
         }
     };
 }
-},{}],43:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -5168,7 +5304,7 @@ function directive(formulateDirectives) {
         template: formulateDirectives.get("fields/textField/textField.html")
     };
 }
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -5184,7 +5320,7 @@ function directive(formulateDirectives) {
         template: formulateDirectives.get("fields/uploadField/uploadField.html")
     };
 }
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 //TODO: Disable buttons during folder save.
 // Variables.
 directive.$inject = ["formulateDirectives"];
@@ -5339,7 +5475,7 @@ function getCanSave(services) {
         return services.$scope.initialized;
     };
 }
-},{}],46:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 //TODO: Disable buttons during form save.
 // Variables.
 directive.$inject = ["formulateDirectives"];
@@ -5859,7 +5995,7 @@ function appChanged(services) {
         $scope.$broadcast("editors.apps.appChanged", { app: app });
     };
 }
-},{}],47:[function(require,module,exports){
+},{}],48:[function(require,module,exports){
 // Variables.
 formFieldsChooserDirective.$inject = ["formulateDirectives"];
 Controller.$inject = ["$scope", "notificationsService"];
@@ -6015,7 +6151,7 @@ Controller.prototype.watchFieldChanges = function () {
         $scope.chosenFields = ids;
     });
 };
-},{}],48:[function(require,module,exports){
+},{}],49:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["$scope", "$element", "formulateHandlers"];
@@ -6087,7 +6223,7 @@ function calculateDialogTop(options) {
     }
 
 }
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives", "$compile"];
 var app = angular.module("umbraco");
@@ -6116,7 +6252,7 @@ function directive(formulateDirectives, $compile) {
         }
     };
 }
-},{}],50:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 Controller.$inject = ["$scope", "notificationsService"];
@@ -6188,7 +6324,7 @@ Controller.prototype.deleteRecipient = function (index) {
     var $scope = this.injected.$scope;
     $scope.configuration.recipients.splice(index, 1);
 };
-},{}],51:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 /*
  This directive handles the list of fields in a somewhat complicated way, so it could use some
  explaining. In short, the fields chosen by the users are stored both in the
@@ -6395,7 +6531,7 @@ Controller.prototype.watchFieldChanges = function () {
         $scope.configuration.fields = storedFields;
     });
 };
-},{}],52:[function(require,module,exports){
+},{}],53:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["$scope"];
@@ -6420,7 +6556,7 @@ function directive(formulateDirectives) {
 // Controller.
 function controller($scope) {
 }
-},{}],53:[function(require,module,exports){
+},{}],54:[function(require,module,exports){
 // Variables.
 directive.$inject = ["localizationService"];
 var app = angular.module("umbraco");
@@ -6457,7 +6593,7 @@ function getLocalizeLinker(localizationService) {
 
     };
 }
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 //TODO: Disable buttons during layout save.
 // Variables.
 directive.$inject = ["formulateDirectives"];
@@ -6637,7 +6773,7 @@ function getCanSave(services) {
         return services.$scope.initialized;
     };
 }
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives", "$compile"];
 var app = angular.module("umbraco");
@@ -6665,7 +6801,7 @@ function directive(formulateDirectives, $compile) {
         }
     };
 }
-},{}],56:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 /**
  * The "formulateLayoutBasic" directive allows the user to create
  * a form layout that uses multiple rows and multiple columns.
@@ -7124,7 +7260,7 @@ function refreshFields(formId, services) {
             replenishFields($scope);
         });
 }
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 // Variables.
 controller.$inject = ["$scope", "$location", "$q", "$http", "navigationService", "formulateLayouts", "formulateVars"];
 directive.$inject = ["formulateDirectives"];
@@ -7247,7 +7383,7 @@ function getCanCreate(services) {
         }
     };
 }
-},{}],58:[function(require,module,exports){
+},{}],59:[function(require,module,exports){
 // Variables.
 directive.$inject = ["localizationService"];
 var app = angular.module("umbraco");
@@ -7284,7 +7420,7 @@ function getLocalizeLinker(localizationService) {
 
     };
 }
-},{}],59:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 // Variables.
 directive.$inject = ["localizationService", "$compile"];
 var app = angular.module("umbraco");
@@ -7322,7 +7458,7 @@ function getLocalizeLinker(localizationService, $compile) {
 
     };
 }
-},{}],60:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 // Variables.
 controller.$inject = ["$scope", "navigationService", "formulateEntities", "formulateCloud", "notificationsService"];
 directive.$inject = ["formulateDirectives"];
@@ -7408,7 +7544,7 @@ function getCancel(services) {
         services.navigationService.hideDialog();
     };
 }
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["$routeParams", "formulateEntities", "formulateTrees"];
@@ -7461,7 +7597,7 @@ function initializeEntity(options, services) {
         });
 
 }
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 // Variables.
 controller.$inject = ["$scope", "navigationService", "formulateEntities", "formulateCloud", "notificationsService"];
 directive.$inject = ["formulateDirectives"];
@@ -7547,7 +7683,7 @@ function getCancel(services) {
         services.navigationService.hideDialog();
     };
 }
-},{}],63:[function(require,module,exports){
+},{}],64:[function(require,module,exports){
 //TODO: Disable buttons during validation save.
 // Variables.
 directive.$inject = ["formulateDirectives"];
@@ -7726,7 +7862,7 @@ function getCanSave(services) {
         return services.$scope.initialized;
     };
 }
-},{}],64:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives", "$compile"];
 var app = angular.module("umbraco");
@@ -7754,7 +7890,7 @@ function directive(formulateDirectives, $compile) {
         }
     };
 }
-},{}],65:[function(require,module,exports){
+},{}],66:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -7774,7 +7910,7 @@ function directive(formulateDirectives) {
         }
     };
 }
-},{}],66:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 var app = angular.module("umbraco");
@@ -7794,7 +7930,7 @@ function directive(formulateDirectives) {
         }
     };
 }
-},{}],67:[function(require,module,exports){
+},{}],68:[function(require,module,exports){
 // Variables.
 controller.$inject = ["$scope", "$location", "$q", "$http", "navigationService", "formulateValidations", "formulateVars"];
 directive.$inject = ["formulateDirectives"];
@@ -7918,7 +8054,7 @@ function getCanCreate(services) {
         }
     };
 }
-},{}],68:[function(require,module,exports){
+},{}],69:[function(require,module,exports){
 // Variables.
 directive.$inject = ["formulateDirectives"];
 controller.$inject = ["formulateSubmissions", "editorService", "$scope", "formulateForms", "formulateVars"];
@@ -8149,7 +8285,7 @@ function adjustPagerItems(injected) {
     }
 
 }
-},{}],69:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 // Associate controller.
 controller.$inject = ["$scope", "formulateConfiguredForms", "editorService"];
 app.controller("formulate.editors.configuredFormPicker", controller);
@@ -8230,7 +8366,7 @@ function refreshForm(conFormId, services) {
             $scope.formName = data.name;
         });
 }
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 var translations = {};
@@ -8256,7 +8392,7 @@ app.filter("formulatelocalize", ["localizationService", function (localizationSe
     filterFn.$stateful = true;
     return filterFn;
 }]);
-},{}],71:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -8327,7 +8463,7 @@ function getRemoveEntityFromCloud(services) {
 
     };
 }
-},{}],72:[function(require,module,exports){
+},{}],73:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -8429,7 +8565,7 @@ function getDeleteConfiguredForm(services) {
 
     };
 }
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -8642,7 +8778,7 @@ function getMoveDataValue(services) {
 
     };
 }
-},{}],74:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 // Requirements.
 var getDirective = require("../Utilities/getDirective.js");
 
@@ -8669,7 +8805,7 @@ app.factory("formulateDirectives", function() {
 
     };
 });
-},{"../Utilities/getDirective.js":90}],75:[function(require,module,exports){
+},{"../Utilities/getDirective.js":91}],76:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -8757,7 +8893,7 @@ function getGetEntity(services) {
 
     };
 }
-},{}],76:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -8856,7 +8992,7 @@ function getGetFieldCategories(services) {
 
     };
 }
-},{}],77:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9017,7 +9153,7 @@ function getDeleteFolder(services) {
 
     };
 }
-},{}],78:[function(require,module,exports){
+},{}],79:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9044,7 +9180,10 @@ app.factory("formulateForms", ["formulateVars", "formulateServer", function (for
         deleteForm: getDeleteForm(services),
 
         // Moves a form to a new parent on the server.
-        moveForm: getMoveForm(services)
+        moveForm: getMoveForm(services),
+
+        // Duplicates a form.
+        duplicateForm: getDuplicateForm(services)
 
     };
 
@@ -9221,7 +9360,32 @@ function getMoveForm(services) {
 
     };
 }
-},{}],79:[function(require,module,exports){
+
+// Returns the function that duplicates a form from the server.
+function getDuplicateForm(services) {
+    return function (formId, parentId) {
+
+        // Variables.
+        var url = services.formulateVars.DuplicateForm;
+        var data = {
+            FormId: formId,
+            ParentId: parentId
+        };
+
+        // Send request to delete the form.
+        return services.formulateServer.post(url, data, function (data) {
+
+            // Return form ID and path.
+            return {
+                formId: data.FormId,
+                path: data.Path
+            };
+
+        });
+
+    };
+}
+},{}],80:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9292,7 +9456,7 @@ function getGetResultHandlers(services) {
 
     };
 }
-},{}],80:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9449,7 +9613,7 @@ function getMoveLayout(services) {
 
     };
 }
-},{}],81:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9491,7 +9655,7 @@ function localizeApp(app, localizationService) {
 
         });
 }
-},{}],82:[function(require,module,exports){
+},{}],83:[function(require,module,exports){
 // See: http://stackoverflow.com/a/18609594/2052963
 
 // Variables.
@@ -9527,7 +9691,7 @@ app.factory('formulateRecursion', ["$compile", function($compile) {
         }
     };
 }]);
-},{}],83:[function(require,module,exports){
+},{}],84:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9634,7 +9798,7 @@ function getHandleResponse(services, successCallback) {
 
     };
 }
-},{}],84:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9674,7 +9838,7 @@ function getHasConfiguredRecaptcha(services) {
 
     };
 }
-},{}],85:[function(require,module,exports){
+},{}],86:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9773,7 +9937,7 @@ function getDeleteSubmission(services) {
 
     };
 }
-},{}],86:[function(require,module,exports){
+},{}],87:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9816,7 +9980,7 @@ function getGetTemplates(services) {
 
     };
 }
-},{}],87:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -9850,7 +10014,7 @@ function getActivateEntity(services) {
         services.navigationService.syncTree(options);
     };
 }
-},{}],88:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -10038,7 +10202,7 @@ function getMoveValidation(services) {
 
     };
 }
-},{}],89:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 // Variables.
 var app = angular.module("umbraco");
 
@@ -10046,7 +10210,7 @@ var app = angular.module("umbraco");
 app.factory("formulateVars", function() {
     return Umbraco.Sys.ServerVariables.formulate;
 });
-},{}],90:[function(require,module,exports){
+},{}],91:[function(require,module,exports){
 // Require the auto-generated file containing the directives.
 var directives = require("../../../FormulateTemp/directives.js")();
 
@@ -10057,7 +10221,7 @@ var getDirective = function (path) {
 
 // Export function.
 module.exports = getDirective;
-},{"../../../FormulateTemp/directives.js":1}],91:[function(require,module,exports){
+},{"../../../FormulateTemp/directives.js":1}],92:[function(require,module,exports){
 // Include all services.
 require('./Services/formulateCloud.js');require('./Services/formulateConfiguredForms.js');require('./Services/formulateDataValues.js');require('./Services/formulateDirectives.js');require('./Services/formulateEntities.js');require('./Services/formulateFields.js');require('./Services/formulateFolders.js');require('./Services/formulateForms.js');require('./Services/formulateHandlers.js');require('./Services/formulateLayouts.js');require('./Services/formulateLocalization.js');require('./Services/formulateRecursion.js');require('./Services/formulateServer.js');require('./Services/formulateServerConfig.js');require('./Services/formulateSubmissions.js');require('./Services/formulateTemplates.js');require('./Services/formulateTrees.js');require('./Services/formulateValidations.js');require('./Services/formulateVars.js');
 
@@ -10068,5 +10232,5 @@ require('./Filters/formulateLocalize.js');
 require('./Editors/configuredFormPicker.js');
 
 // Include all directives.
-require('../Directives/configuredFormDesigner/designer.js');require('../Directives/createFolder/createFolder.js');require('../Directives/dataValueDesigner/designer.js');require('../Directives/dataValueEditor/dataValueEditor.js');require('../Directives/dataValueKinds/dataValueList/dataValueList.js');require('../Directives/dataValueKinds/dataValueListFunction/dataValueListFunction.js');require('../Directives/dataValueKinds/dataValuePairList/dataValuePairList.js');require('../Directives/dataValueTypeChooser/dataValueChooser.js');require('../Directives/deleteConfiguredFormConfirmation/deleteConfiguredForm.js');require('../Directives/deleteDataValueConfirmation/deleteDataValue.js');require('../Directives/deleteFolderConfirmation/deleteFolder.js');require('../Directives/deleteFormConfirmation/deleteForm.js');require('../Directives/deleteLayoutConfirmation/deleteLayout.js');require('../Directives/deleteValidationConfirmation/deleteValidation.js');require('../Directives/dialogs/configuredFormPicker/formPicker.js');require('../Directives/dialogs/dataValuePicker/dataValuePicker.js');require('../Directives/dialogs/formPicker/formPicker.js');require('../Directives/dialogs/layoutPicker/layoutPicker.js');require('../Directives/dialogs/moveDataValue/moveDataValue.js');require('../Directives/dialogs/moveFolder/moveFolder.js');require('../Directives/dialogs/moveForm/moveForm.js');require('../Directives/dialogs/moveLayout/moveLayout.js');require('../Directives/dialogs/moveValidation/moveValidation.js');require('../Directives/dialogs/validationPicker/validationPicker.js');require('../Directives/entityPicker/entityPicker.js');require('../Directives/entityPicker/entityPickerTree.js');require('../Directives/fieldChooser/fieldChooser.js');require('../Directives/fieldEditor/fieldEditor.js');require('../Directives/fields/buttonField/buttonField.js');require('../Directives/fields/checkboxField/checkboxField.js');require('../Directives/fields/checkboxListField/checkboxListField.js');require('../Directives/fields/dateField/dateField.js');require('../Directives/fields/dropDownField/dropDownField.js');require('../Directives/fields/extendedRadioButtonListField/extendedRadioButtonListField.js');require('../Directives/fields/headerField/headerField.js');require('../Directives/fields/hiddenField/hiddenField.js');require('../Directives/fields/radioButtonListField/radioButtonListField.js');require('../Directives/fields/recaptchaField/recaptchaField.js');require('../Directives/fields/richTextField/richTextField.js');require('../Directives/fields/textAreaField/textAreaField.js');require('../Directives/fields/textConstantField/textConstantField.js');require('../Directives/fields/textField/textField.js');require('../Directives/fields/uploadField/uploadField.js');require('../Directives/folderDesigner/designer.js');require('../Directives/formDesigner/designer.js');require('../Directives/formFieldsChooser/formFieldsChooser.js');require('../Directives/handlerChooser/handlerChooser.js');require('../Directives/handlerEditor/handlerEditor.js');require('../Directives/handlers/emailHandler/emailHandler.js');require('../Directives/handlers/sendDataHandler/sendDataHandler.js');require('../Directives/handlers/storeDataHandler/storeDataHandler.js');require('../Directives/injectLocalization/injectLocalization.js');require('../Directives/layoutDesigner/designer.js');require('../Directives/layoutEditor/layoutEditor.js');require('../Directives/layoutKinds/layoutBasic/layoutBasic.js');require('../Directives/layoutTypeChooser/layoutChooser.js');require('../Directives/localizeAttribute/localizeAttribute.js');require('../Directives/localizeContent/localizeContent.js');require('../Directives/removeEntityFromCloudConfirmation/removeEntityFromCloud.js');require('../Directives/rootEntityOverview/rootEntityOverview.js');require('../Directives/storeEntityToCloudConfirmation/storeEntityToCloud.js');require('../Directives/validationDesigner/designer.js');require('../Directives/validationEditor/validationEditor.js');require('../Directives/validationKinds/validationMandatory/validationMandatory.js');require('../Directives/validationKinds/validationRegex/validationRegex.js');require('../Directives/validationTypeChooser/validationChooser.js');require('../Directives/viewSubmissions/viewSubmissions.js');
-},{"../Directives/configuredFormDesigner/designer.js":2,"../Directives/createFolder/createFolder.js":3,"../Directives/dataValueDesigner/designer.js":4,"../Directives/dataValueEditor/dataValueEditor.js":5,"../Directives/dataValueKinds/dataValueList/dataValueList.js":7,"../Directives/dataValueKinds/dataValueListFunction/dataValueListFunction.js":6,"../Directives/dataValueKinds/dataValuePairList/dataValuePairList.js":8,"../Directives/dataValueTypeChooser/dataValueChooser.js":9,"../Directives/deleteConfiguredFormConfirmation/deleteConfiguredForm.js":10,"../Directives/deleteDataValueConfirmation/deleteDataValue.js":11,"../Directives/deleteFolderConfirmation/deleteFolder.js":12,"../Directives/deleteFormConfirmation/deleteForm.js":13,"../Directives/deleteLayoutConfirmation/deleteLayout.js":14,"../Directives/deleteValidationConfirmation/deleteValidation.js":15,"../Directives/dialogs/configuredFormPicker/formPicker.js":16,"../Directives/dialogs/dataValuePicker/dataValuePicker.js":17,"../Directives/dialogs/formPicker/formPicker.js":18,"../Directives/dialogs/layoutPicker/layoutPicker.js":19,"../Directives/dialogs/moveDataValue/moveDataValue.js":20,"../Directives/dialogs/moveFolder/moveFolder.js":21,"../Directives/dialogs/moveForm/moveForm.js":22,"../Directives/dialogs/moveLayout/moveLayout.js":23,"../Directives/dialogs/moveValidation/moveValidation.js":24,"../Directives/dialogs/validationPicker/validationPicker.js":25,"../Directives/entityPicker/entityPicker.js":26,"../Directives/entityPicker/entityPickerTree.js":27,"../Directives/fieldChooser/fieldChooser.js":28,"../Directives/fieldEditor/fieldEditor.js":29,"../Directives/fields/buttonField/buttonField.js":30,"../Directives/fields/checkboxField/checkboxField.js":31,"../Directives/fields/checkboxListField/checkboxListField.js":32,"../Directives/fields/dateField/dateField.js":33,"../Directives/fields/dropDownField/dropDownField.js":34,"../Directives/fields/extendedRadioButtonListField/extendedRadioButtonListField.js":35,"../Directives/fields/headerField/headerField.js":36,"../Directives/fields/hiddenField/hiddenField.js":37,"../Directives/fields/radioButtonListField/radioButtonListField.js":38,"../Directives/fields/recaptchaField/recaptchaField.js":39,"../Directives/fields/richTextField/richTextField.js":40,"../Directives/fields/textAreaField/textAreaField.js":41,"../Directives/fields/textConstantField/textConstantField.js":42,"../Directives/fields/textField/textField.js":43,"../Directives/fields/uploadField/uploadField.js":44,"../Directives/folderDesigner/designer.js":45,"../Directives/formDesigner/designer.js":46,"../Directives/formFieldsChooser/formFieldsChooser.js":47,"../Directives/handlerChooser/handlerChooser.js":48,"../Directives/handlerEditor/handlerEditor.js":49,"../Directives/handlers/emailHandler/emailHandler.js":50,"../Directives/handlers/sendDataHandler/sendDataHandler.js":51,"../Directives/handlers/storeDataHandler/storeDataHandler.js":52,"../Directives/injectLocalization/injectLocalization.js":53,"../Directives/layoutDesigner/designer.js":54,"../Directives/layoutEditor/layoutEditor.js":55,"../Directives/layoutKinds/layoutBasic/layoutBasic.js":56,"../Directives/layoutTypeChooser/layoutChooser.js":57,"../Directives/localizeAttribute/localizeAttribute.js":58,"../Directives/localizeContent/localizeContent.js":59,"../Directives/removeEntityFromCloudConfirmation/removeEntityFromCloud.js":60,"../Directives/rootEntityOverview/rootEntityOverview.js":61,"../Directives/storeEntityToCloudConfirmation/storeEntityToCloud.js":62,"../Directives/validationDesigner/designer.js":63,"../Directives/validationEditor/validationEditor.js":64,"../Directives/validationKinds/validationMandatory/validationMandatory.js":65,"../Directives/validationKinds/validationRegex/validationRegex.js":66,"../Directives/validationTypeChooser/validationChooser.js":67,"../Directives/viewSubmissions/viewSubmissions.js":68,"./Editors/configuredFormPicker.js":69,"./Filters/formulateLocalize.js":70,"./Services/formulateCloud.js":71,"./Services/formulateConfiguredForms.js":72,"./Services/formulateDataValues.js":73,"./Services/formulateDirectives.js":74,"./Services/formulateEntities.js":75,"./Services/formulateFields.js":76,"./Services/formulateFolders.js":77,"./Services/formulateForms.js":78,"./Services/formulateHandlers.js":79,"./Services/formulateLayouts.js":80,"./Services/formulateLocalization.js":81,"./Services/formulateRecursion.js":82,"./Services/formulateServer.js":83,"./Services/formulateServerConfig.js":84,"./Services/formulateSubmissions.js":85,"./Services/formulateTemplates.js":86,"./Services/formulateTrees.js":87,"./Services/formulateValidations.js":88,"./Services/formulateVars.js":89}]},{},[91]);
+require('../Directives/configuredFormDesigner/designer.js');require('../Directives/createFolder/createFolder.js');require('../Directives/dataValueDesigner/designer.js');require('../Directives/dataValueEditor/dataValueEditor.js');require('../Directives/dataValueKinds/dataValueList/dataValueList.js');require('../Directives/dataValueKinds/dataValueListFunction/dataValueListFunction.js');require('../Directives/dataValueKinds/dataValuePairList/dataValuePairList.js');require('../Directives/dataValueTypeChooser/dataValueChooser.js');require('../Directives/deleteConfiguredFormConfirmation/deleteConfiguredForm.js');require('../Directives/deleteDataValueConfirmation/deleteDataValue.js');require('../Directives/deleteFolderConfirmation/deleteFolder.js');require('../Directives/deleteFormConfirmation/deleteForm.js');require('../Directives/deleteLayoutConfirmation/deleteLayout.js');require('../Directives/deleteValidationConfirmation/deleteValidation.js');require('../Directives/dialogs/configuredFormPicker/formPicker.js');require('../Directives/dialogs/dataValuePicker/dataValuePicker.js');require('../Directives/dialogs/formPicker/formPicker.js');require('../Directives/dialogs/layoutPicker/layoutPicker.js');require('../Directives/dialogs/moveDataValue/moveDataValue.js');require('../Directives/dialogs/moveFolder/moveFolder.js');require('../Directives/dialogs/moveForm/moveForm.js');require('../Directives/dialogs/moveLayout/moveLayout.js');require('../Directives/dialogs/moveValidation/moveValidation.js');require('../Directives/dialogs/validationPicker/validationPicker.js');require('../Directives/duplicateFormConfirmation/duplicateForm.js');require('../Directives/entityPicker/entityPicker.js');require('../Directives/entityPicker/entityPickerTree.js');require('../Directives/fieldChooser/fieldChooser.js');require('../Directives/fieldEditor/fieldEditor.js');require('../Directives/fields/buttonField/buttonField.js');require('../Directives/fields/checkboxField/checkboxField.js');require('../Directives/fields/checkboxListField/checkboxListField.js');require('../Directives/fields/dateField/dateField.js');require('../Directives/fields/dropDownField/dropDownField.js');require('../Directives/fields/extendedRadioButtonListField/extendedRadioButtonListField.js');require('../Directives/fields/headerField/headerField.js');require('../Directives/fields/hiddenField/hiddenField.js');require('../Directives/fields/radioButtonListField/radioButtonListField.js');require('../Directives/fields/recaptchaField/recaptchaField.js');require('../Directives/fields/richTextField/richTextField.js');require('../Directives/fields/textAreaField/textAreaField.js');require('../Directives/fields/textConstantField/textConstantField.js');require('../Directives/fields/textField/textField.js');require('../Directives/fields/uploadField/uploadField.js');require('../Directives/folderDesigner/designer.js');require('../Directives/formDesigner/designer.js');require('../Directives/formFieldsChooser/formFieldsChooser.js');require('../Directives/handlerChooser/handlerChooser.js');require('../Directives/handlerEditor/handlerEditor.js');require('../Directives/handlers/emailHandler/emailHandler.js');require('../Directives/handlers/sendDataHandler/sendDataHandler.js');require('../Directives/handlers/storeDataHandler/storeDataHandler.js');require('../Directives/injectLocalization/injectLocalization.js');require('../Directives/layoutDesigner/designer.js');require('../Directives/layoutEditor/layoutEditor.js');require('../Directives/layoutKinds/layoutBasic/layoutBasic.js');require('../Directives/layoutTypeChooser/layoutChooser.js');require('../Directives/localizeAttribute/localizeAttribute.js');require('../Directives/localizeContent/localizeContent.js');require('../Directives/removeEntityFromCloudConfirmation/removeEntityFromCloud.js');require('../Directives/rootEntityOverview/rootEntityOverview.js');require('../Directives/storeEntityToCloudConfirmation/storeEntityToCloud.js');require('../Directives/validationDesigner/designer.js');require('../Directives/validationEditor/validationEditor.js');require('../Directives/validationKinds/validationMandatory/validationMandatory.js');require('../Directives/validationKinds/validationRegex/validationRegex.js');require('../Directives/validationTypeChooser/validationChooser.js');require('../Directives/viewSubmissions/viewSubmissions.js');
+},{"../Directives/configuredFormDesigner/designer.js":2,"../Directives/createFolder/createFolder.js":3,"../Directives/dataValueDesigner/designer.js":4,"../Directives/dataValueEditor/dataValueEditor.js":5,"../Directives/dataValueKinds/dataValueList/dataValueList.js":7,"../Directives/dataValueKinds/dataValueListFunction/dataValueListFunction.js":6,"../Directives/dataValueKinds/dataValuePairList/dataValuePairList.js":8,"../Directives/dataValueTypeChooser/dataValueChooser.js":9,"../Directives/deleteConfiguredFormConfirmation/deleteConfiguredForm.js":10,"../Directives/deleteDataValueConfirmation/deleteDataValue.js":11,"../Directives/deleteFolderConfirmation/deleteFolder.js":12,"../Directives/deleteFormConfirmation/deleteForm.js":13,"../Directives/deleteLayoutConfirmation/deleteLayout.js":14,"../Directives/deleteValidationConfirmation/deleteValidation.js":15,"../Directives/dialogs/configuredFormPicker/formPicker.js":16,"../Directives/dialogs/dataValuePicker/dataValuePicker.js":17,"../Directives/dialogs/formPicker/formPicker.js":18,"../Directives/dialogs/layoutPicker/layoutPicker.js":19,"../Directives/dialogs/moveDataValue/moveDataValue.js":20,"../Directives/dialogs/moveFolder/moveFolder.js":21,"../Directives/dialogs/moveForm/moveForm.js":22,"../Directives/dialogs/moveLayout/moveLayout.js":23,"../Directives/dialogs/moveValidation/moveValidation.js":24,"../Directives/dialogs/validationPicker/validationPicker.js":25,"../Directives/duplicateFormConfirmation/duplicateForm.js":26,"../Directives/entityPicker/entityPicker.js":27,"../Directives/entityPicker/entityPickerTree.js":28,"../Directives/fieldChooser/fieldChooser.js":29,"../Directives/fieldEditor/fieldEditor.js":30,"../Directives/fields/buttonField/buttonField.js":31,"../Directives/fields/checkboxField/checkboxField.js":32,"../Directives/fields/checkboxListField/checkboxListField.js":33,"../Directives/fields/dateField/dateField.js":34,"../Directives/fields/dropDownField/dropDownField.js":35,"../Directives/fields/extendedRadioButtonListField/extendedRadioButtonListField.js":36,"../Directives/fields/headerField/headerField.js":37,"../Directives/fields/hiddenField/hiddenField.js":38,"../Directives/fields/radioButtonListField/radioButtonListField.js":39,"../Directives/fields/recaptchaField/recaptchaField.js":40,"../Directives/fields/richTextField/richTextField.js":41,"../Directives/fields/textAreaField/textAreaField.js":42,"../Directives/fields/textConstantField/textConstantField.js":43,"../Directives/fields/textField/textField.js":44,"../Directives/fields/uploadField/uploadField.js":45,"../Directives/folderDesigner/designer.js":46,"../Directives/formDesigner/designer.js":47,"../Directives/formFieldsChooser/formFieldsChooser.js":48,"../Directives/handlerChooser/handlerChooser.js":49,"../Directives/handlerEditor/handlerEditor.js":50,"../Directives/handlers/emailHandler/emailHandler.js":51,"../Directives/handlers/sendDataHandler/sendDataHandler.js":52,"../Directives/handlers/storeDataHandler/storeDataHandler.js":53,"../Directives/injectLocalization/injectLocalization.js":54,"../Directives/layoutDesigner/designer.js":55,"../Directives/layoutEditor/layoutEditor.js":56,"../Directives/layoutKinds/layoutBasic/layoutBasic.js":57,"../Directives/layoutTypeChooser/layoutChooser.js":58,"../Directives/localizeAttribute/localizeAttribute.js":59,"../Directives/localizeContent/localizeContent.js":60,"../Directives/removeEntityFromCloudConfirmation/removeEntityFromCloud.js":61,"../Directives/rootEntityOverview/rootEntityOverview.js":62,"../Directives/storeEntityToCloudConfirmation/storeEntityToCloud.js":63,"../Directives/validationDesigner/designer.js":64,"../Directives/validationEditor/validationEditor.js":65,"../Directives/validationKinds/validationMandatory/validationMandatory.js":66,"../Directives/validationKinds/validationRegex/validationRegex.js":67,"../Directives/validationTypeChooser/validationChooser.js":68,"../Directives/viewSubmissions/viewSubmissions.js":69,"./Editors/configuredFormPicker.js":70,"./Filters/formulateLocalize.js":71,"./Services/formulateCloud.js":72,"./Services/formulateConfiguredForms.js":73,"./Services/formulateDataValues.js":74,"./Services/formulateDirectives.js":75,"./Services/formulateEntities.js":76,"./Services/formulateFields.js":77,"./Services/formulateFolders.js":78,"./Services/formulateForms.js":79,"./Services/formulateHandlers.js":80,"./Services/formulateLayouts.js":81,"./Services/formulateLocalization.js":82,"./Services/formulateRecursion.js":83,"./Services/formulateServer.js":84,"./Services/formulateServerConfig.js":85,"./Services/formulateSubmissions.js":86,"./Services/formulateTemplates.js":87,"./Services/formulateTrees.js":88,"./Services/formulateValidations.js":89,"./Services/formulateVars.js":90}]},{},[92]);
