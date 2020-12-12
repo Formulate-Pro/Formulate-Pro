@@ -1,12 +1,6 @@
 .formulate__field {
-    &--radio-list {
-        label {
-            display: block;
-        }
-    }
-
     &--validation-error {
-        &.formulate__field--radio-list {
+        &.formulate__field--checkbox {
             label {
                 color: #f00;
             }

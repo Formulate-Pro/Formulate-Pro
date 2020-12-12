@@ -41,6 +41,15 @@
         legend {
             font-weight: bold;
         }
+
+        // Style the fieldset when a validation error is present.
+        &.formulate__field--validation-error {
+            border-color: #f00;
+
+            legend {
+                color: #f00;
+            }
+        }
     }
 }
 

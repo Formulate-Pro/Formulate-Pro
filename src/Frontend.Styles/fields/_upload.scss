@@ -1,80 +1,100 @@
-.formulate__field--upload {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.formulate__field {
+    &--upload {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
 
-    input {
-        position: absolute;
-        left: -9999px;
-    }
-
-    &__deselect {
-        color: transparent;
-        width: 20px;
-        height: 20px;
-        padding: 0;
-        margin: 0 0 0 10px;
-        border: 0;
-        background: none;
-        cursor: pointer;
-        user-select: none;
-
-        &:before {
-            content: 'X';
-            display: block;
-            color: #000;
-            font-weight: bold;
-            font-family: monospace;
-            font-size: 20px;
-            transform: scaleX(1.3);
-            line-height: 1;
+        input {
+            position: absolute;
+            left: -9999px;
         }
 
-        &:focus {
+        &__deselect {
+            color: transparent;
+            width: 20px;
+            height: 20px;
+            padding: 0;
+            margin: 0 0 0 10px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            user-select: none;
+
             &:before {
-                text-shadow: 1px 1px 3px #000;
+                content: 'X';
+                display: block;
+                color: #000;
+                font-weight: bold;
+                font-family: monospace;
+                font-size: 20px;
+                transform: scaleX(1.3);
+                line-height: 1;
+            }
+
+            &:focus {
+                &:before {
+                    text-shadow: 1px 1px 3px #000;
+                }
+            }
+
+            &:active,
+            &:focus {
+                outline: 0;
             }
         }
 
-        &:active,
-        &:focus {
-            outline: 0;
+        &__filename {
+            margin-left: 10px;
         }
-    }
 
-    &__filename {
-        margin-left: 10px;
-    }
-
-    .formulate__field__label-text {
-        border-radius: 0;
-        border: 2px solid;
-        box-shadow:
-            2px 2px 0 #888,
-            3px 3px 1px #888;
-        height: 50px;
-        line-height: 50px;
-        padding: 0 14px;
-        min-width: 200px;
-        font-weight: bold;
-        text-align: center;
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-        display: inline-block;
-    }
-
-    input:focus + .formulate__field__label-text,
-    input:active + .formulate__field__label-text {
-        text-shadow: 2px 2px 2px #888;
-    }
-
-    .formulate__field__label:active {
         .formulate__field__label-text {
-            box-shadow: 2px 2px 1px #888;
+            border-radius: 0;
+            border: 2px solid;
+            box-shadow:
+                2px 2px 0 #888,
+                3px 3px 1px #888;
+            height: 50px;
+            line-height: 50px;
+            padding: 0 14px;
+            min-width: 200px;
+            font-weight: bold;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        input:focus + .formulate__field__label-text,
+        input:active + .formulate__field__label-text {
+            text-shadow: 2px 2px 2px #888;
+        }
+
+        .formulate__field__label:active {
+            .formulate__field__label-text {
+                box-shadow: 2px 2px 1px #888;
+            }
+        }
+
+        .formulate__inline-validation-summary {
+            width: 100%;
         }
     }
 
-    .formulate__inline-validation-summary {
-        width: 100%;
+    &--validation-error {
+        &.formulate__field--upload {
+            .formulate__field__label-text {
+                border-color: #f00;
+                color: #f00;
+                box-shadow:
+                    2px 2px 0 #800,
+                    3px 3px 1px #800;
+            }
+
+            .formulate__field__label:active {
+                .formulate__field__label-text {
+                    box-shadow: 2px 2px 1px #800;
+                }
+            }
+        }
     }
 }

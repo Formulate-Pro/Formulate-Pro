@@ -1,5 +1,15 @@
-.formulate__field--checkbox-list {
-    label {
-        display: block;
+.formulate__field {
+    &--checkbox-list {
+        label {
+            display: block;
+        }
+    }
+
+    &--validation-error {
+        &.formulate__field--checkbox-list {
+            label {
+                color: #f00;
+            }
+        }
     }
 }
