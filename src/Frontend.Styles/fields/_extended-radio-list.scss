@@ -1,7 +1,51 @@
 .formulate__field {
     &--extended-radio-list {
+        display: flex;
+        flex-direction: column;
+
         label {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+
+        .formulate__field__label-text {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -20px;
+                content: '';
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border: 2px solid #000;
+                border-radius: 10px;
+            }
+
+            + .formulate__field__label-text {
+                font-weight: normal;
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+        input {
+            position: absolute;
+            left: -9999px;
+
+            &:checked {
+                + .formulate__field__label-text {
+                    &:before {
+                        border-width: 8px;
+                    }
+                }
+            }
         }
     }
 
@@ -9,6 +53,12 @@
         &.formulate__field--extended-radio-list {
             label {
                 color: #f00;
+            }
+
+            .formulate__field__label-text {
+                &:before {
+                    border-color: #f00;
+                }
             }
         }
     }
