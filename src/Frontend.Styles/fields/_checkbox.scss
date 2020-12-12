@@ -1,8 +1,47 @@
 .formulate__field {
+    &--checkbox {
+        label {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+            margin-right: 16px;
+
+            &:before {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                left: -20px;
+                content: '';
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                border: 2px solid #000;
+                border-radius: 2px;
+            }
+        }
+
+        input {
+            position: absolute;
+            left: -9999px;
+
+            &:checked {
+                + label {
+                    &:before {
+                        border-width: 8px;
+                    }
+                }
+            }
+        }
+    }
+
     &--validation-error {
         &.formulate__field--checkbox {
             label {
                 color: #f00;
+
+                &:before {
+                    border-color: #f00;
+                }
             }
         }
     }
