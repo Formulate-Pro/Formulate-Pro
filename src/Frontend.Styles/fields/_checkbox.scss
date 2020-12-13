@@ -40,6 +40,14 @@
                     }
                 }
             }
+
+            &:focus {
+                + label {
+                    &:before {
+                        box-shadow: 2px 2px 2px #888;
+                    }
+                }
+            }
         }
     }
 
