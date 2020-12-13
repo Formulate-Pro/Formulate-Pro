@@ -22,31 +22,24 @@
             position: relative;
 
             &:before {
-                content: '';
-                display: inline-block;
-                width: 20px;
-                height: 4px;
-                background: #000;
                 transform: rotate(-45deg);
-                position: absolute;
-                left: 0;
             }
 
             &:after {
-                content: '';
-                display: inline-block;
-                width: 20px;
-                height: 4px;
-                background: #000;
                 transform: rotate(45deg);
-                position: absolute;
-                left: 0;
             }
 
             &:before,
             &:after {
                 top: 8px;
                 border-radius: 2px;
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 4px;
+                background: #000;
+                position: absolute;
+                left: 0;
             }
 
             &:focus {
