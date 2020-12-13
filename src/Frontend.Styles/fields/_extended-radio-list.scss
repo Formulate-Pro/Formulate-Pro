@@ -42,7 +42,7 @@
             &:checked {
                 + .formulate__field__label-text {
                     &:before {
-                        border-width: 8px;
+                        background: radial-gradient(#000, #000 35%, #0000 40%);
                     }
                 }
             }
