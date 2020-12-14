@@ -1,12 +1,16 @@
 // Named colors.
 $formulate-color--black: #000;
+$formulate-color--black-transparent: #0000;
 $formulate-color--white: #fff;
 $formulate-color--red: #f00;
+$formulate-color--red-transparent: #f000;
 $formulate-color--grey: #888;
 $formulate-color--grey-light: #eee;
 
 // Theme colors.
 $formulate-color--border: $formulate-color--black;
+$formulate-color--border-transparent: $formulate-color--black-transparent;
 $formulate-color--field: $formulate-color--white;
 $formulate-color--error: $formulate-color--red;
+$formulate-color--error-transparent: $formulate-color--red-transparent;
 $formulate-color--shadow: $formulate-color--grey;
