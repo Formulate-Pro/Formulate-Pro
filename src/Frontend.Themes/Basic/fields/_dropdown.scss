@@ -1,37 +1,47 @@
+@import '../settings/settings';
+
+// Select (aka drop down) fields.
 .formulate__field {
     &--select {
-        display: flex;
-        flex-direction: column;
 
+        // Hide the label (the first option in the drop down also serves as a label).
         label {
             position: absolute;
             left: -9999px;
         }
 
+        // Style the initial selection as if it were a label.
         &--initial {
             select {
-                font-weight: bold;
+                font-weight: $formulate-font-weight--field-caption;
             }
         }
-    }
-    select {
-        border-radius: 0;
-        border: 2px solid;
-        height: 50px;
-        line-height: 50px;
 
-        &:focus {
-            background: #eee;
-            outline: 0;
+        // Style the drop down.
+        select {
+            border-radius: $formulate-size--field-radius;
+            border: $formulate-border--default;
+            height: $formulate-size--field-height;
+            line-height: $formulate-size--field-height;
+
+            // Set the background on focus.
+            &:focus {
+                background: $formulate-color--grey-light;
+                outline: 0;
+            }
+
         }
+
     }
 
+    // Style the field when there is a validation error.
     &--validation-error {
         &.formulate__field--select {
             select {
-                border-color: #f00;
-                color: #f00;
+                border-color: $formulate-color--error;
+                color: $formulate-color--error;
             }
         }
     }
+
 }
