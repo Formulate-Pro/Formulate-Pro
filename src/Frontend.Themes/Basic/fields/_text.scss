@@ -1,50 +1,60 @@
+@import '../settings/settings';
 @import 'fields-shared';
 
+// Plain text fields.
 .formulate__field {
-    input[type=text] {
-        border-radius: 0;
-        border: 2px solid;
+    &--text {
+        input[type=text] {
 
-        @include hide-text-placeholder();
+            // Basic field styles.
+            border-radius: $formulate-size--field-radius;
+            border: $formulate-border--default;
 
-        + label {
-            position: absolute;
-            background: transparent;
-            transition: all 0.25s;
-            left: 10px;
-        }
+            // Hide the placeholder text (we'll use the label as a placeholder).
+            @include hide-text-placeholder();
 
-        &:focus {
-            background: #eee;
-            outline: 0;
-        }
+            // Style the label as a placeholder (position it on top of the field).
+            + label {
+                position: absolute;
+                background: transparent;
+                transition: all $formulate-transition-duration;
+                left: $formulate-text-padding--horizontal;
+                top: 18px;
+            }
 
-        &:focus + label,
-        &:not(:placeholder-shown) + label {
-            line-height: 12px;
-            top: 4px;
-            font-size: 12px;
-            transform: initial;
-        }
+            // Focused state.
+            &:focus {
+                background: $formulate-color--field-focused;
+                outline: 0;
+            }
 
-        + label {
-            top: 18px;
+            // When the field is focused or text is entered, convert the placeholder
+            // to a label.
+            &:focus + label,
+            &:not(:placeholder-shown) + label {
+                line-height: 12px;
+                top: 4px;
+                font-size: $formulate-size--label-focused-font-size;
+                transform: initial;
+            }
+
         }
     }
 
+    // Style the field when there is a validation error.
     &--validation-error {
         &.formulate__field--text {
             input[type=text] {
                 &,
                 &:active,
                 &:focus {
-                    border-color: #f00;
+                    border-color: $formulate-color--error;
                 }
-
                 + label {
-                    color: #f00;
+                    color: $formulate-color--error;
                 }
             }
         }
     }
+
 }
