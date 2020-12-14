@@ -53,6 +53,7 @@
     }
 }
 
+// Hides the placeholder text (so the label can act as a placeholder).
 @mixin hide-text-placeholder() {
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: transparent;

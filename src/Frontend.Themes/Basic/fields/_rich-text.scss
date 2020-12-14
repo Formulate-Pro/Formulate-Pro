@@ -1,6 +1,9 @@
+@import '../settings/settings';
+
+// Rich text fields.
 .formulate__field {
     &--rich-text {
-        padding: 10px;
-        background: #f6f6ff;
+        padding: $formulate-rich-text-padding;
+        background: $formulate-color--blue-super-light;
     }
 }
