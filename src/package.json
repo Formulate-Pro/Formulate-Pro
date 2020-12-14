@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "npm run styles",
-    "styles": "sass Frontend.Styles/app.scss Website/css/app.css"
+    "styles": "sass Frontend.Themes/Basic/app.scss Website/App_Plugins/Formulate.Pro/Themes/Basic/basic.css"
   },
   "keywords": [],
   "author": "",

@@ -13,14 +13,18 @@
     <copyright>Copyright 2020</copyright>
     <tags>umbraco forms</tags>
     <dependencies>
-      <dependency id="Formulate.Binaries" version="3.3.3" />
-      <dependency id="MetaObject" version="0.1.0" />
-      <dependency id="Newtonsoft.Json" version="12.0.1" />
-      <dependency id="RazorEngine" version="3.10.0" />
+      <group targetFramework=".NETFramework4.7.2">
+        <dependency id="Formulate.Binaries" version="3.3.3" />
+        <dependency id="MetaObject" version="0.1.0" />
+        <dependency id="Newtonsoft.Json" version="12.0.1" />
+        <dependency id="RazorEngine" version="3.10.0" />
+      </group>
     </dependencies>
   </metadata>
   <files>
     <file src="bin\Release\Formulate.Pro*.dll" target="lib\net472" />
     <file src="bin\Release\Formulate.Pro*.xml" target="lib\net472" />
+    <file src="..\Frontend.Themes\**\*.scss" target="content\App_Plugins\Formulate.Pro\Themes" />
+    <file src="..\Website\App_Plugins\Formulate.Pro\Themes\**\*" target="content\App_Plugins\Formulate.Pro\Themes" />
   </files>
 </package>
