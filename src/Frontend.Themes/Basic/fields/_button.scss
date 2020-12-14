@@ -14,6 +14,8 @@
         background: $formulate-color--field;
         border-radius: $formulate-size--field-radius;
         font-weight: $formulate-font-weight--button;
+        font-family: $formulate-font-family--button;
+        font-size: $formulate-size--button-font-size;
 
         // Remove the outline from the button on active/focus states.
         &:active,
