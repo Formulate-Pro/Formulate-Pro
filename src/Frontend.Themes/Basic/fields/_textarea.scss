@@ -1,74 +1,65 @@
+@import '../settings/settings';
 @import 'fields-shared';
 
+// Text area fields.
 .formulate__field {
-    /*&--textarea {
-        &::before {
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            height: 200px;
-            background-color: #000;
-            z-index: -1;
-        }
-    }*/
-
     textarea {
-        border-radius: 0;
-        border: 2px solid #000;
 
+        // Basic field styles.
+        border-radius: $formulate-size--field-radius;
+        border: $formulate-border--default;
+        width: 100%;
+        height: 200px;
+        padding: 20px $formulate-text-padding--horizontal 10px $formulate-text-padding--horizontal;
+
+        // Hide the placeholder text (we'll use the label as a placeholder).
         @include hide-text-placeholder();
 
+        // Style the label as a placeholder (position it on top of the field).
         + label {
             position: absolute;
             background: transparent;
             transition:
-                all 0.25s,
+                all $formulate-transition-duration,
                 background-color 0s;
-            left: 10px;
+            left: $formulate-text-padding--horizontal;
+            top: 20px;
+            line-height: 1;
         }
 
+        // Focused state.
         &:focus {
-            background: #eee;
+            background: $formulate-color--field-focused;
             outline: 0;
         }
+        &:focus + label {
+            background-color: $formulate-color--field-focused;
+        }
 
+        // When the field is focused or text is entered, convert the placeholder
+        // to a label.
         &:focus + label,
         &:not(:placeholder-shown) + label {
             line-height: 12px;
             top: 2px;
             left: 2px;
             padding: 4px 10px 4px 10px;
-            font-size: 12px;
+            font-size: $formulate-size--label-focused-font-size;
             transform: initial;
         }
 
-        &:focus + label {
-            background-color: #eee;
-        }
     }
 
-    textarea {
-        width: 100%;
-        height: 200px;
-        padding: 20px 10px 10px 10px;
-
-        + label {
-            top: 20px;
-            line-height: 1;
-        }
-    }
-
+    // Style the field when there is a validation error.
     &--validation-error {
         &.formulate__field--textarea {
             textarea {
-                border-color: #f00;
+                border-color: $formulate-color--error;
                 + label {
-                    color: #f00;
+                    color: $formulate-color--error;
                 }
             }
         }
     }
+
 }
