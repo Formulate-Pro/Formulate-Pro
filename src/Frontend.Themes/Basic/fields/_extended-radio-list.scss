@@ -25,7 +25,7 @@
             position: relative;
 
             // Give room for the radio button.
-            margin-left: 20px;
+            margin-left: $formulate-size--radio + $formulate-radio-label-gap;
 
             // Style the "before" pseudo selector as a radio button (a circle).
             &:before {
