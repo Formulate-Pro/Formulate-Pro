@@ -1,5 +1,4 @@
-// Variables.
-$gutter: 20px;
+@import '../settings/settings';
 
 // Define flexbox sizing on each row.
 .formulate__row {
@@ -12,7 +11,7 @@ $gutter: 20px;
 @for $column from 1 through 12 {
     $blocks-per-row: 12 / $column;
     $gaps-per-column: $blocks-per-row - 1;
-    $gutter-per-column: $gaps-per-column * $gutter / $blocks-per-row;
+    $gutter-per-column: $gaps-per-column * $formulate-grid-gutter / $blocks-per-row;
     $width-per-column: $column / 12 * 100%;
     .formulate__cell--#{$column}-columns {
         width: calc(#{$width-per-column} - #{$gutter-per-column});
@@ -20,7 +19,7 @@ $gutter: 20px;
 }
 
 // On mobile, use the full width of the viewport.
-@media (max-width: 767px) {
+@media (max-width: $formulate-breakpoint--mobile-max) {
     .formulate__cell {
         width: 100%;
     }
