@@ -1,0 +1,11 @@
+@import 'colors';
+
+// Box shadows.
+$formulate-shadow--box-shallow: 2px 2px 1px $formulate-color--shadow;
+$formulate-shadow--box-deep:
+    2px 2px 0 $formulate-color--shadow,
+    3px 3px 1px $formulate-color--shadow;
+$formulate-shadow--box-medium: 2px 2px 2px $formulate-color--shadow;
+
+// Text shadows.
+$formulate-shadow--text-default: 2px 2px 2px $formulate-color--shadow;

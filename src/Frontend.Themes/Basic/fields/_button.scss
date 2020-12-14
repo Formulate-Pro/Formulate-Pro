@@ -1,28 +1,35 @@
+@import '../settings/settings';
+
+// Button fields.
 .formulate__field--button {
     button {
-        border-radius: 0;
-        border: 2px solid;
-        box-shadow:
-            2px 2px 0 #888,
-            3px 3px 1px #888;
-        height: 50px;
-        line-height: 50px;
-        padding: 0 14px;
-        min-width: 200px;
-        font-weight: bold;
-        background: #fff;
 
+        // Style the button in the default state.
+        border: $formulate-border--default;
+        box-shadow: $formulate-shadow--box-deep;
+        height: $formulate-size--field-height;
+        line-height: $formulate-size--field-height;
+        padding: 0 $formulate-button-padding--horizontal;
+        min-width: $formulate-size--min-button-width;
+        background: $formulate-color--field;
+        border-radius: $formulate-size--field-radius;
+        font-weight: $formulate-font-weight--button;
+
+        // Remove the outline from the button on active/focus states.
         &:active,
         &:focus {
             outline: 0;
         }
 
+        // When the button is active, reduce the box shadow.
         &:active {
-            box-shadow: 2px 2px 1px #888;
+            box-shadow: $formulate-shadow--box-shallow;
         }
 
+        // When the button is focused, add a text shadow.
         &:focus {
-            text-shadow: 2px 2px 2px #888;
+            text-shadow: $formulate-shadow--text-default;
         }
+
     }
 }
