@@ -27,6 +27,7 @@
                 height: $formulate-size--radio;
                 border: $formulate-border--default;
                 border-radius: $formulate-size--radio-radius;
+                background: $formulate-color--field;
             }
         }
 
@@ -42,7 +43,7 @@
                     &:before {
 
                         // Create a dot at the center of the circle.
-                        background: radial-gradient(#000, #000 35%, #0000 40%);
+                        background: $formulate-gradient--dot;
 
                     }
                 }
@@ -52,7 +53,7 @@
             &:focus {
                 + .formulate__field__label-text {
                     &:before {
-                        box-shadow: 2px 2px 2px #888;
+                        box-shadow: $formulate-shadow--box-medium;
                     }
                 }
             }
@@ -66,7 +67,6 @@
             label {
                 color: $formulate-color--error;
             }
-
             .formulate__field__label-text {
                 &:before {
                     border-color: $formulate-color--error;

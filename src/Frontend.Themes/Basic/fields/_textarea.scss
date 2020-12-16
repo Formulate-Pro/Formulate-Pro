@@ -11,6 +11,7 @@
         width: 100%;
         height: 200px;
         padding: 20px $formulate-text-padding--horizontal 10px $formulate-text-padding--horizontal;
+        background: $formulate-color--field;
 
         // Hide the placeholder text (we'll use the label as a placeholder).
         @include hide-text-placeholder();

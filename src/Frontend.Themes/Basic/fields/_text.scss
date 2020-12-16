@@ -9,6 +9,7 @@
             // Basic field styles.
             border-radius: $formulate-size--field-radius;
             border: $formulate-border--default;
+            background: $formulate-color--field;
 
             // Hide the placeholder text (we'll use the label as a placeholder).
             @include hide-text-placeholder();
