@@ -8,9 +8,10 @@ For more info about acquiring a license and installing Formulate Pro, see here: 
 
 # Features
 
-This list will grow over time, but these are the current capabilities of Formulate Pro:
+These are the current capabilities of Formulate Pro:
 
 * **Send Designed Emails** When a form is submitted, this will allow you to send emails based on Razor view files (i.e., CSHTML files). This will allow you to create fully custom email designs.
+* **Basic Theme** A set of customizable Sass styles (also compiled to CSS) that allow you to easily style your forms.
 
 # Benefits
 
