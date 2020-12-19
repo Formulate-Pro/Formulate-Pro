@@ -36,3 +36,12 @@ This is also a license that is open to further changes based on common sense (e.
 I will note litigate against anybody for making an honest mistake in reading this license. Let's work together to understand each other and improve this license.
 
 If in doubt, feel free to ask me for clarification. If you want to make a reasonable assumption without asking me, feel free to do that too.
+
+USAGE TRACKING NOTICE
+=====================
+
+Note that there is a bit of code within the code base for Formulate Pro that adds a small amount of non-invasive (it occurs once per feature use per app pool life span on a background thread) usage tracking.
+
+A minimal amount of information is collected for the purposes of correlating purchases with usage statistics. This helps to ensure people are honestly using Formulate Pro. As they say, trust but verify.
+
+The code is also written in a defensive way to ensure it doesn't interfere with normal operation even if something goes wrong. If you would like to vet the tracking code, it is part of the normal repo and is freely available for you to inspect.
