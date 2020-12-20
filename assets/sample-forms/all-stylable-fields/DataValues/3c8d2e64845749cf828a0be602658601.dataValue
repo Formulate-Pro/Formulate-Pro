@@ -1,0 +1,11 @@
+{
+  "KindId": "753a9598-8044-48e3-9bc6-200ac39e1d27",
+  "Id": "3c8d2e64-8457-49cf-828a-0be602658601",
+  "Path": [
+    "0461c41c-04a3-417b-90d6-3ce2ae7b67f1",
+    "3c8d2e64-8457-49cf-828a-0be602658601"
+  ],
+  "Alias": "numbers",
+  "Name": "Numbers",
+  "Data": "{\r\n  \"items\": [\r\n    {\r\n      \"primary\": \"One\",\r\n      \"secondary\": \"This is the first number.\"\r\n    },\r\n    {\r\n      \"primary\": \"Two\",\r\n      \"secondary\": \"This is the second number.\"\r\n    }\r\n  ]\r\n}"
+}

@@ -1,0 +1,11 @@
+{
+  "KindId": "93957a02-6339-44a1-9323-8e8cd754680b",
+  "Id": "75d2bb17-dc68-4d88-a9f6-8002504e62e1",
+  "Path": [
+    "e19ab439-ce99-4709-9d4a-d4f354d97fac",
+    "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+  ],
+  "Alias": "required",
+  "Name": "Required",
+  "Data": "{\r\n  \"message\": \"This field is required.\"\r\n}"
+}

@@ -1,0 +1,221 @@
+{
+  "Id": "e254385e-a5c1-49f4-bb54-877c2f19e1cb",
+  "Path": [
+    "3d634e15-7d15-45fa-a8a9-12838fa3a345",
+    "e254385e-a5c1-49f4-bb54-877c2f19e1cb"
+  ],
+  "Alias": null,
+  "Name": "Sample Form",
+  "Fields": [
+    {
+      "Id": "20acb4d3-8a62-469a-8ce8-4782a76faed4",
+      "Alias": null,
+      "Name": "Button",
+      "Label": "Send Data",
+      "Category": null,
+      "Validations": [],
+      "MetaInfo": null,
+      "FieldConfiguration": "{}",
+      "TypeId": "cde8565c-5e92-4112-9a1f-7ffa1940c53c",
+      "IsTransitory": true,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": true
+    },
+    {
+      "Id": "f230a173-d4b4-4364-a282-0ad943d6060f",
+      "Alias": null,
+      "Name": "Checkbox",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{}",
+      "TypeId": "99c1a656-c7a6-44ac-a787-c18593327310",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "d803efcc-1f25-41d2-9a0d-97b9bb1f2c7e",
+      "Alias": null,
+      "Name": "Checkbox List",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{\r\n  \"dataValue\": \"a11dac13b0c841f68f0bddbb0797e570\"\r\n}",
+      "TypeId": "02dba5da-4b93-439e-b63f-43392e443dcf",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "391ae839-27d6-413b-a21d-72a08310caad",
+      "Alias": null,
+      "Name": "Date Picker",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{}",
+      "TypeId": "e70cb78c-cf52-4611-98b4-556382f23119",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "c0031987-0ca8-4a50-ba88-637bef9b239c",
+      "Alias": null,
+      "Name": "Drop Down",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{\r\n  \"dataValue\": \"a11dac13b0c841f68f0bddbb0797e570\"\r\n}",
+      "TypeId": "6d3df157-1bc4-4fcf-b2b7-0a94fe719b47",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "64e320bd-abe9-406a-af85-5373735cd28c",
+      "Alias": null,
+      "Name": "Extended Radio Button List",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{\r\n  \"dataValue\": \"3c8d2e64845749cf828a0be602658601\"\r\n}",
+      "TypeId": "8b277af3-1b1f-4698-97d2-3900c6621c7d",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "ad95694c-8701-47f5-8103-5a24aa5ddda9",
+      "Alias": null,
+      "Name": "Header",
+      "Label": null,
+      "Category": null,
+      "Validations": [],
+      "MetaInfo": null,
+      "FieldConfiguration": "{\r\n  \"text\": \"Header Text\"\r\n}",
+      "TypeId": "6383dd2c-68bd-482b-95db-811d09d01bc8",
+      "IsTransitory": true,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "f4929c5a-26f4-4832-ab6a-8cab73c1e39a",
+      "Alias": null,
+      "Name": "Radio Button List",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{\r\n  \"dataValue\": \"a11dac13b0c841f68f0bddbb0797e570\"\r\n}",
+      "TypeId": "e5f42754-d82d-468d-bcbf-cee115e9563d",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "6ae27a7a-010b-422e-910c-797e21546d8a",
+      "Alias": null,
+      "Name": "Rich Text",
+      "Label": null,
+      "Category": null,
+      "Validations": [],
+      "MetaInfo": null,
+      "FieldConfiguration": "{\r\n  \"text\": \"<p>Sample <strong>rich</strong> text:</p>\\n<ol>\\n<li>One</li>\\n<li>Two</li>\\n<li>Three</li>\\n</ol>\"\r\n}",
+      "TypeId": "6fcdfdc9-293f-4913-b762-f4ba502216eb",
+      "IsTransitory": true,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "07dda748-188d-442f-863c-d87108d9e4bc",
+      "Alias": null,
+      "Name": "Text",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1",
+        "9b15ceae-a858-4795-ae46-8310ea2d94c4"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{}",
+      "TypeId": "17906580-86ea-440b-bc30-9e1b099f803b",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "f0305c71-9275-4ce3-bbe8-cfe7ca13fa8b",
+      "Alias": null,
+      "Name": "Text Area",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{}",
+      "TypeId": "9da84359-4d0b-4944-9144-9f8ccae7a4da",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    },
+    {
+      "Id": "1a2d6c8f-64d5-43ee-abcb-05e17882e057",
+      "Alias": null,
+      "Name": "Upload",
+      "Label": null,
+      "Category": null,
+      "Validations": [
+        "75d2bb17-dc68-4d88-a9f6-8002504e62e1"
+      ],
+      "MetaInfo": null,
+      "FieldConfiguration": "{}",
+      "TypeId": "dfefa5ec-0200-4806-a2ab-0ab22058021d",
+      "IsTransitory": false,
+      "IsServerSideOnly": false,
+      "IsHidden": false,
+      "IsStored": false
+    }
+  ],
+  "Handlers": [
+    {
+      "Id": "3e3b9e08-c914-45b2-9a7c-ae4e7c4e3812",
+      "Alias": null,
+      "Name": "Test",
+      "Enabled": true,
+      "HandlerConfiguration": "{\r\n  \"recipients\": [\r\n    {\r\n      \"email\": \"e@mai.lcom\"\r\n    }\r\n  ],\r\n  \"recipientFields\": [],\r\n  \"fieldsToInclude\": []\r\n}",
+      "TypeId": "a0c06033-cb94-424f-9c03-5b10a420db16"
+    }
+  ],
+  "MetaInfo": null
+}

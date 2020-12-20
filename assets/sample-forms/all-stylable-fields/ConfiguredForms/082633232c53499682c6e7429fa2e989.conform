@@ -1,0 +1,12 @@
+{
+  "Id": "08263323-2c53-4996-82c6-e7429fa2e989",
+  "Kind": 3,
+  "Name": "Sample Form",
+  "Path": [
+    "3d634e15-7d15-45fa-a8a9-12838fa3a345",
+    "e254385e-a5c1-49f4-bb54-877c2f19e1cb",
+    "08263323-2c53-4996-82c6-e7429fa2e989"
+  ],
+  "TemplateId": "f3fb1485-c1d1-4806-b419-0d7abde39530",
+  "LayoutId": "218eaf0c-00dd-42f5-8dfd-d34116812ba0"
+}

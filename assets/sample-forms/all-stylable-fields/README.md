@@ -1,0 +1,1 @@
+This form contains all fields that are visible and that can readily be styled (e.g., doesn't include the Recaptcha field, as it can't really be styled).

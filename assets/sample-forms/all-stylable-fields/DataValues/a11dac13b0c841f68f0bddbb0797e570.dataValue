@@ -1,0 +1,11 @@
+{
+  "KindId": "3106d817-abfc-4d46-a9b1-aba8b8f87f39",
+  "Id": "a11dac13-b0c8-41f6-8f0b-ddbb0797e570",
+  "Path": [
+    "0461c41c-04a3-417b-90d6-3ce2ae7b67f1",
+    "a11dac13-b0c8-41f6-8f0b-ddbb0797e570"
+  ],
+  "Alias": "simpleList",
+  "Name": "Simple List",
+  "Data": "{\r\n  \"items\": [\r\n    {\r\n      \"value\": \"One\"\r\n    },\r\n    {\r\n      \"value\": \"Two\"\r\n    },\r\n    {\r\n      \"value\": \"Three\"\r\n    }\r\n  ]\r\n}"
+}

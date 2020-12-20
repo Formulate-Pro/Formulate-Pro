@@ -1,0 +1,11 @@
+{
+  "KindId": "ac9a464f-6f3f-4af9-a3b2-9c85ff0c5580",
+  "Id": "9b15ceae-a858-4795-ae46-8310ea2d94c4",
+  "Path": [
+    "e19ab439-ce99-4709-9d4a-d4f354d97fac",
+    "9b15ceae-a858-4795-ae46-8310ea2d94c4"
+  ],
+  "Alias": "email",
+  "Name": "Email",
+  "Data": "{\r\n  \"regex\": \"hello\",\r\n  \"message\": \"Not an email!\"\r\n}"
+}
