@@ -1,0 +1,29 @@
+@import '../settings/settings';
+
+// Manages multi-step form styles.
+.formulate__row {
+
+    // Set attribute transition durations (i.e., between active/inactive states).
+    transition:
+        transform $formulate-transition-duration--long,
+        max-height $formulate-transition-duration--long,
+        opacity $formulate-transition-duration--long;
+
+    // When the elements are larger than the max height, hide them.
+    overflow: hidden;
+
+    // Styles when a row is active.
+    position: relative;
+    transform: scale(1);
+    opacity: 1;
+    max-height: $formulate-size--row-max-height;
+
+    // Styles when a row is inactive.
+    &--inactive {
+        transform: scale(0);
+        max-height: 0;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+}
