@@ -1,0 +1,29 @@
+@import 'sizes';
+
+// Animation to show a step in a multi-step form.
+@keyframes show-formulate-step {
+    from {
+        transform: scale(0);
+        max-height: 0;
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        max-height: $formulate-size--row-max-height;
+        opacity: 1;
+    }
+}
+
+// Animation to hide a step in a multi-step form.
+@keyframes hide-formulate-step {
+    from {
+        transform: scale(1);
+        max-height: $formulate-size--row-max-height;
+        opacity: 1;
+    }
+    to {
+        transform: scale(0);
+        max-height: 0;
+        opacity: 0;
+    }
+}
