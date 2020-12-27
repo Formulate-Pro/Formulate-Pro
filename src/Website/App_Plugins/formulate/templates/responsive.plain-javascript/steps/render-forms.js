@@ -152,17 +152,31 @@ function advanceFormStepInDom(form, formState, allFields, direction) {
 
     // Variables.
     let i, field, enabled,
-        oldStepRows = form.querySelectorAll(".formulate__row--step-" + formState.stepIndex.toString()),
-        newStepRows = form.querySelectorAll(".formulate__row--step-" + (formState.stepIndex + direction).toString());
+        strStepIndex = formState.stepIndex.toString(),
+        strAdjacentStepIndex = (formState.stepIndex + direction).toString(),
+        oldStepRows = form.querySelectorAll(".formulate__row--step-" + strStepIndex),
+        newStepRows = form.querySelectorAll(".formulate__row--step-" + strAdjacentStepIndex),
+        oldStep = form.querySelector(".formulate__step-" + strStepIndex),
+        newStep = form.querySelector(".formulate__step-" + strAdjacentStepIndex);
 
     // Advance to adjacent step.
     formState.stepIndex += direction;
 
-    // Update CSS classes on the active and inactive rows.
+    // Update CSS classes on the inactive rows.
+    oldStep.classList.remove("formulate__step--active");
+    oldStep.classList.add("formulate__step--inactive");
+    oldStep.classList.add("formulate__step--animating");
+    removeAnimatingClassAfterDelay(oldStep);
     for (i = 0; i < oldStepRows.length; i++) {
         oldStepRows[i].classList.remove("formulate__row--active");
         oldStepRows[i].classList.add("formulate__row--inactive");
     }
+
+    // Update CSS classes on the active rows.
+    newStep.classList.remove("formulate__step--inactive");
+    newStep.classList.add("formulate__step--active");
+    newStep.classList.add("formulate__step--animating");
+    removeAnimatingClassAfterDelay(newStep);
     for (i = 0; i < newStepRows.length; i++) {
         newStepRows[i].classList.remove("formulate__row--inactive");
         newStepRows[i].classList.add("formulate__row--active");
@@ -177,6 +191,18 @@ function advanceFormStepInDom(form, formState, allFields, direction) {
         }
     }
 
+}
+
+/**
+ * After a short delay (default of half a second), remove the CSS class that indicates
+ * the step is being animated.
+ * @param step The DOM element for the step that will have the CSS class removed.
+ */
+function removeAnimatingClassAfterDelay(step) {
+    let delay = window.formulateMultiStepAnimationDelay || 500;
+    setTimeout(function () {
+        step.classList.remove("formulate__step--animating");
+    }, delay);
 }
 
 /**
