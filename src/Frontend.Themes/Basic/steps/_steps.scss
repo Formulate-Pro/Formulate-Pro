@@ -1,7 +1,7 @@
 @import '../settings/settings';
 
 // Manages multi-step form styles.
-.formulate__row {
+.formulate__step {
 
     // Set attribute transition durations (i.e., between active/inactive states).
     transition:
@@ -12,31 +12,27 @@
     // When the elements are larger than the max height, hide them.
     overflow: hidden;
 
-    // Styles when a row is active.
-    &--active {
+    // Styles when a step is active and animating.
+    &--active.formulate__step--animating {
 
-        // Animate the row into view.
+        // Animate the step into view.
         animation: show-formulate-step $formulate-transition-duration--long forwards;
 
     }
 
-    // When the form step is first displayed, do not show an animation.
-    &--active-initial {
-        animation: initial;
-    }
-
-    // Styles when a row is inactive.
+    // Styles when a step is inactive.
     &--inactive {
 
-        // Animate the row out of view.
-        animation: hide-formulate-step $formulate-transition-duration--long forwards;
+        // Animate the step out of view.
+        &.formulate__step--animating {
+            animation: hide-formulate-step $formulate-transition-duration--long forwards;
+        }
 
-        // For accessibility, fully hide the inactive steps. This style kicks in
-        // a moment after the row is set to inactive, which allows for a short
-        // animation before the step is fully disabled.
-        &-and-disabled {
+        // For accessibility, fully hide the inactive steps once the animation is complete.
+        &:not(.formulate__step--animating) {
             display: none;
         }
+
     }
 
 }
