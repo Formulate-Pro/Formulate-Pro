@@ -3,8 +3,7 @@
 Before creating the NuGet package, you'll need to build a few things:
 
 * Prepare the frontend with `npm i`.
-* Build the frontend with `npm run build`.
-* Build the Visual Studio solution with "Release" selected.
+* Rebuild the Visual Studio solution with "Release" selected. This will automatically cause `npm run build` to run.
 
 # NuGet
 
