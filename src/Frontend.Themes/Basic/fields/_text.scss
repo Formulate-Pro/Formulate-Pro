@@ -38,6 +38,13 @@
                 font-size: $formulate-size--label-focused-font-size;
                 transform: initial;
             }
+            &:focus + label,
+            &:not(:-ms-input-placeholder) + label {
+                line-height: 12px;
+                top: 4px;
+                font-size: $formulate-size--label-focused-font-size;
+                transform: initial;
+            }
 
         }
     }
